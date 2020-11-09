@@ -13,10 +13,6 @@ let passport = require('passport');
 let userModel = require('../models/user');
 let User = userModel.Model; // alias
 
-//connect the business model
-let businessModel = require('../models/business');
-let Business = businessModel.Model;
-
 module.exports.DisplayHomePage = (req, res, next) => {
 
     console.log("Home Page Controller");
