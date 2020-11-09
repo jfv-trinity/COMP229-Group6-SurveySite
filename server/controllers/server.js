@@ -21,23 +21,23 @@ module.exports.DisplayHomePage = (req, res, next) => {
     displayName: req.user ? req.user.displayName : '' });
   }
   
-module.exports.DisplayProductsPage = (req, res, next) => {
-    res.render('projects', { title: 'Products',
+module.exports.DisplaySurveyPage = (req, res, next) => {
+    res.render('survey', { title: 'Survey',
     displayName: req.user ? req.user.displayName : '' });
   }
 
-module.exports.DisplayServicesPage = (req, res, next) => {
-    res.render('services', { title: 'Services',
+module.exports.DisplaySurveyListPage = (req, res, next) => {
+    res.render('surveylist', { title: 'Survey List',
     displayName: req.user ? req.user.displayName : '' });
   }
 
-module.exports.DisplayAboutPage = (req, res, next) => {
-    res.render('me', { title: 'About',
+module.exports.DisplaySurveyCreatePage = (req, res, next) => {
+    res.render('surveycreate', { title: 'Create a Survey',
     displayName: req.user ? req.user.displayName : '' });
   }
   
-module.exports.DisplayContactPage = (req, res, next) => {
-    res.render('contact', { title: 'Contact',
+module.exports.DisplaySurveyEditPage = (req, res, next) => {
+    res.render('surveyedit', { title: 'Edit a Survey',
     displayName: req.user ? req.user.displayName : '' });
   }
 

@@ -19,17 +19,17 @@ router.get('/', indexController.DisplayHomePage);
 /* GET home page. */
 router.get('/home', indexController.DisplayHomePage);
 
-/* GET Products page. */
-router.get('/projects', indexController.DisplayProductsPage);
+/* GET Survey page. */
+router.get('/survey', indexController.DisplaySurveyPage);
 
-/* GET Services page. */
-router.get('/services', indexController.DisplayServicesPage);
+/* GET Survey List page. */
+router.get('/surveylist', indexController.DisplaySurveyListPage);
 
-/* GET About page. */
-router.get('/about', indexController.DisplayAboutPage);
+/* GET Create Survey page. */
+router.get('/surveycreate', indexController.DisplaySurveyCreatePage);
 
-/* GET Contact page. */
-router.get('/contact', indexController.DisplayContactPage);
+/* GET Edit Survey page. */
+router.get('/surveyedit', indexController.DisplaySurveyEditPage);
 
 /* GET - Display Login Page */
 router.get('/login', indexController.DisplayLoginPage);
