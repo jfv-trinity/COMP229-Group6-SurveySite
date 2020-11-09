@@ -1,1 +1,0 @@
-This is a personal project that is used to showcase my programming knowledge currently and me as an individual

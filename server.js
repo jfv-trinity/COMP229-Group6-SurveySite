@@ -1,17 +1,8 @@
 #!/usr/bin/env node
 
-/* 
-File name: Server.js
-Student Name: Joseph Volpe
-StudentID: 301118010
-Date: 10/22/2020
-*/
-
-
 /* Module dependencies. */
-
 let app = require('./server/config/app');
-let debug = require('debug')('personalporfolio');
+let debug = require('debug')('SurveySite');
 let http = require('http');
 
 /* Get port from environment and store in Express. */

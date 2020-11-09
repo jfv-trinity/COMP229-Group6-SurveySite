@@ -1,10 +1,3 @@
-/* 
-File name: app.js
-Student Name: Joseph Volpe
-StudentID: 301118010
-Date: 10/22/2020
-*/
-
 //module for errors & logs
 let createError = require('http-errors');
 let logger = require('morgan');
