@@ -1,0 +1,32 @@
+<%- include('./partials/header.ejs') -%>
+
+    <div class="container">
+
+        <div class="jumbotron">
+          <h1 class="display-4"><%= title %></h1>
+
+      </div>
+
+      <% if(title == 'Component List') { %>
+        <%- include('./content/component-list.ejs') -%> 
+      <% } else if(title == 'Add Component') { %>
+        <%- include('./content/add-component.ejs') -%> 
+      <% } else if(title == 'Edit Component') { %>
+        <%- include('./content/edit-component.ejs') -%> 
+      <% } %>
+
+      <% if(title == 'Business List') { %>
+        <%- include('./content/business-list.ejs') -%> 
+      <% } else if(title == 'Add Contact') { %>
+        <%- include('./content/add-business.ejs') -%> 
+      <% } else if(title == 'Edit Contacts') { %>
+        <%- include('./content/edit-business.ejs') -%> 
+      <% } %>
+
+    </div>
+
+    <%- include('./partials/bottomnav.ejs') -%>
+<%- include('./partials/footer.ejs') -%>
+    
+
+    

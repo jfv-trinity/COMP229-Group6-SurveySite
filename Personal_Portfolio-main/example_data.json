@@ -1,0 +1,41 @@
+{
+"components": [
+{
+    "partID" : "GPU-NVidia-RTX-3090",
+    "name" : "NVIDIA RTX 3090 GPU - 24GB",
+    "description" : "The GeForce RTX 3090 is a big ferocious GPU (BFGPU) with TITAN class performance.",
+    "price" : 1499
+},
+{
+    "partID" : "CPU-Intel-i9-10900K",
+    "name" : "Intel i9 10th gen (10900k) CPU",
+    "description" : "10th Gen Intel Core i9-10900K unlocked desktop processor",
+    "price" : 988.18
+},
+{
+    "partID" : "AIO-Corsair-H115i",
+    "name" : "Corsair H115i RGB Platinum AIO Cooler",
+    "description" : "Two 140mm ML PRO Series RGB magnetic levitation PWM fans deliver a blast of color and improved airflow for extreme CPU cooling performance.",
+    "price" : 244.99
+},
+{
+    "partID" : "RAM-Corsair-PC4-25600",
+    "name" : "Corsair Vengeance RGB Pro 32GB (2x16GB) DDR4 3200",
+    "description" : "CORSAIR Vengeance RGB PRO Series DDR4 memory lights up your PC with mesmerizing dynamic multi zone RGB lighting, while delivering the best in DDR4 performance and stability. Every module boasts ten individually controlled RGB LEDs, while wire free design makes installation simple.",
+    "price" : 209.99
+},
+{
+    "partID" : "MBD-MSI-Z490-GODLIKE",
+    "name" : "MSI Z490 Godlike Motherboard",
+    "description" : "Supports 10th Gen Intel Core Pentium Celeron processors for LGA 1200 socket",
+    "price" : 1025.55
+},
+{
+    "partID" : "SSD-WD-Black-SN750-1TB",
+    "name" : "WD_Black SN750 1TB NVMe Internal Gaming SSD - Gen3 PCIe, M.2 2280, 3D NAND - WDS100T3X0C",
+    "description" : "At the core of the WD BLACK drive is its revolutionary NAND technology. By doubling the storage density from its previous generation, our 64-layer 3D NAND pushes the limitations of storage and showcases the amazing feat of NAND innovation. ",
+    "price" : 193.37,
+    "__v" : 0
+}
+]
+}

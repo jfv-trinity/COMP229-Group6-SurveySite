@@ -1,0 +1,43 @@
+<div class="row justify-content-md-center">
+    <div class="col">
+
+      <a href="/component-list/add" class="btn btn-primary btn-lg"><i class="fas fa-plus-circle"></i> Add New Component</a>
+      <hr>
+
+      <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">part ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% for(let count=0; count < components.length; count++) { %>
+
+          <tr>
+            <td><%= components[count].partID %></td>
+            <td><%= components[count].name %></td>
+            <td><%= components[count].description %></td>
+            <td><%= components[count].price %></td>
+            <td>
+              <a href="/component-list/edit/<%= components[count]._id %>" class="btn btn-primary btn-sm">
+                  <i class="fas fa-edit"></i> Edit</a>
+            </td>
+            <td>
+                <a href="/component-list/delete/<%= components[count]._id %>" class="btn btn-danger btn-sm">
+                    <i class="fas fa-trash-alt"></i> Delete</a>
+            </td>
+          </tr>
+          
+        <% } %>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
