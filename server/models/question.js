@@ -10,7 +10,6 @@ let Schema = mongoose.Schema;
 let Model = mongoose.model;
 
 let Question = Schema({
-    SurveyID : String,
     Question: String,
     Answers: [{ type: String}],
     TotalAnswer: [{ type: Number }]
