@@ -25,7 +25,6 @@ let user = require('../models/user')
 // Routing modules
 let indexRouter = require('../routes/server');
 let usersRouter = require('../routes/users');
-let user_collectionRouter = require('../routes/user_collection');
 
 
 //Modules for databases
@@ -94,7 +93,6 @@ passport.deserializeUser(User.deserializeUser());
 //Initializing Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/user-list', user_collectionRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
