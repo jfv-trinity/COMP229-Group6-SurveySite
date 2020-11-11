@@ -27,7 +27,7 @@ let UserSchema = Schema({
    }
 },
 {
-    collection: 'user_collection'
+    collection: 'users'
 });
 
 // configure options for User Model

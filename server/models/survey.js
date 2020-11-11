@@ -17,4 +17,4 @@ let SurveySchema = Schema({
     collection: 'surveys'
 });
 
-module.exports.Model = Model('Survey', UserSchema);
+module.exports.Model = Model('Survey', SurveySchema);
