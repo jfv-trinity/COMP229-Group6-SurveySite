@@ -1,8 +1,8 @@
 /* 
-File name: survey.js.js
+File name: survey.js
 Student Name: Liam Nelski
 StudentID: 3010642116
-Date: 11/10/2020
+Date: 11/11/2020
 */
 
 let mongoose = require('mongoose');
