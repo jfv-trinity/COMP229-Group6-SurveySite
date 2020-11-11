@@ -1,5 +1,5 @@
 /* 
-File name: survey.js
+File name: question.js
 Student Name: Liam Nelski
 StudentID: 3010642116
 Date: 11/11/2020
