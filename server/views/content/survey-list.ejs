@@ -1,0 +1,60 @@
+<%- include('../partials/header.ejs') -%>
+
+
+<!-- MAIN CONTENT -->
+<div class="container">
+    <div class="row">
+      <div class="col-md-offset-1 col-md-10">
+        <h3 display-4>Survey List </h3>
+        <!-- ------------------------ -->
+        <!-- FIX THE ADD BUTTON BELOW -->
+        <!-- ------------------------ -->
+        <a href="books/add" class="btn btn-primary"><i class="fa fa-plus"></i> Add a survey</a>
+        <br>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Title</th>
+                
+                
+                
+                
+                <!--incase we need more columns-->
+                <!--
+                <th class="text-center"></th>
+                <th class="text-center"></th>
+                -->
+
+                </tr>
+              </thead>
+              <tbody>
+              <!-- Template Row -->
+              <% for (let count = 1; count < 5; count++) { %>
+              <tr>
+                <td><%=" Survey " +count %></td>
+                
+                <td class="text-center">
+                  <a href="/" class="btn btn-primary btn-sm">
+                  <i class="fas fa-pencil-alt"></i> Edit</a>
+              </td>
+              <td class="text-center">
+                  <a href="/" class="btn btn-danger btn-sm">
+                  <i class="fas fa-trash-alt"></i> Delete</a>
+              </td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+         <div class="col-md-offset-1 col-md-10 text-center">
+          <ul class="pagination pagination-lg pager" id="myPager"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    <%- include('../partials/bottomnav.ejs') -%>
+    <%- include('../partials/footer.ejs') -%>

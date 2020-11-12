@@ -19,6 +19,12 @@ router.get('/', indexController.DisplayHomePage);
 /* GET home page. */
 router.get('/home', indexController.DisplayHomePage);
 
+
+/* GET Survey page. */
+router.get('/survey-list', indexController.DisplaySurveyList);
+
+
+
 /* GET Products page. */
 router.get('/projects', indexController.DisplayProductsPage);
 

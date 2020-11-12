@@ -17,10 +17,24 @@ module.exports.DisplayHomePage = (req, res, next) => {
 
     console.log("Home Page Controller");
 
-    res.render('index', { title: 'Home',
+    res.render('index', { title: 'Survey Fox',
     displayName: req.user ? req.user.displayName : '' });
   }
   
+
+
+//Render survey-list View
+  module.exports.DisplaySurveyList = (req, res, next) => {
+
+    console.log("Home Page Controller");
+
+    res.render('content/survey-list', { title: 'Survey List',
+    displayName: req.user ? req.user.displayName : '' });
+  }
+
+
+
+
 module.exports.DisplayProductsPage = (req, res, next) => {
     res.render('projects', { title: 'Products',
     displayName: req.user ? req.user.displayName : '' });
