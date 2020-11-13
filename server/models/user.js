@@ -15,6 +15,7 @@ let UserSchema = Schema({
    //password: string,
    email: String,
    displayName: String,
+   Questions: [{ type: String }],
    created: 
    {
         type: Date,
