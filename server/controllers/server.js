@@ -60,7 +60,7 @@ module.exports.ProcessLoginPage = (req, res, next) => {
         return next(err);
       }
 
-      return res.redirect('/surveylist')
+      return res.redirect('/survey-list')
     });
   })(req, res, next);
 }

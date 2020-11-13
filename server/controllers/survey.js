@@ -29,13 +29,13 @@ module.exports.DisplaySurveyPage = (req, res, next) => {
 }
 
 module.exports.DisplaySurveyListPage = (req, res, next) => {
-  res.render('surveylist', { title: 'Survey List',
+  res.render('survey-list', { title: 'Survey List',
   displayName: req.user ? req.user.displayName : '' 
   });
 }
 
 module.exports.DisplaySurveyCreatePage = (req, res, next) => {
-  res.render('surveycreate', { title: 'Create a Survey',
+  res.render('survey-create', { title: 'Create a Survey',
   displayName: req.user ? req.user.displayName : '' 
   });
 
@@ -65,13 +65,13 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
     }
     else
     {
-      res.redirect('/surveylist');
+      res.redirect('/survey-list');
     }
   });
 }
   
 module.exports.DisplaySurveyEditPage = (req, res, next) => {
-  res.render('surveyedit/:id', { title: 'Edit a Survey',
+  res.render('survey-edit/:id', { title: 'Edit a Survey',
   displayName: req.user ? req.user.displayName : '' 
   });
 }
@@ -102,7 +102,7 @@ module.exports.ProcessSurveyEditPage = (req, res, next) => {
       }
       else
       {
-        res.redirect('/surveylist');
+        res.redirect('/survey-list');
     }
   });
 };
@@ -119,7 +119,7 @@ module.exports.DisplaySurveyDeletePage = (req, res, next) => {
         }
         else
         {
-          res.redirect('/surveylist');
+          res.redirect('/survey-list');
         }
     });
 };
