@@ -19,23 +19,17 @@ router.get('/', indexController.DisplayHomePage);
 /* GET home page. */
 router.get('/home', indexController.DisplayHomePage);
 
+/* GET Survey page. */
+router.get('/survey', indexController.DisplaySurveyPage);
+
 /* GET Survey List page. */
-router.get('/surveylist', indexController.DisplaySurveyListPage);
+router.get('/survey-list', indexController.DisplaySurveyListPage);
 
 /* GET Create Survey page. */
 router.get('/surveycreate', indexController.DisplaySurveyCreatePage);
 
-// Post process create page
-router.post('/surveycreate', indexController.ProcessSurveyCreatePage);
-
 /* GET Edit Survey page. */
-router.get('/surveyedit/:id', indexController.DisplaySurveyEditPage);
-
-// Post process edit page
-router.post('/surveyedit/:id', indexController.ProcessSurveyEditPage);
-
-/* GET Delete Survey page. */
-router.get('/delete/:id', indexController.DisplaySurveyDeletePage);
+router.get('/surveyedit', indexController.DisplaySurveyEditPage);
 
 /* GET - Display Login Page */
 router.get('/login', indexController.DisplayLoginPage);
