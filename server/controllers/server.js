@@ -1,8 +1,5 @@
 /* 
 File name: server.js
-Student Name: Chadwick Lapis
-StudentID: 300800490
-Date: 11/12/2020
 */
 
 let express = require('express');
@@ -15,12 +12,10 @@ let User = userModel.Model; // alias
 
 module.exports.DisplayHomePage = (req, res, next) => {
 
-  console.log("Home Page Controller");
-
-  res.render('index', { title: 'Home',
-  displayName: req.user ? req.user.displayName : '' 
-  });
+  res.render('index', { title: 'Survey Fox',
+  displayName: req.user ? req.user.displayName : '' });
 }
+
 
 module.exports.DisplayLoginPage = (req, res, next) => {
   // check if the user is already logged in
