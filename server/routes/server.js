@@ -2,9 +2,9 @@
 
 /* 
 File name: server.js
-Student Name: Joseph Volpe
-StudentID: 301118010
-Date: 10/22/2020
+Student Name: Chadwick Lapis
+StudentID: 300800490
+Date: 11/12/2020
 */
 
 
@@ -12,6 +12,7 @@ let express = require('express');
 let router = express.Router();
 
 let indexController = require('../controllers/server');
+let surveyController = require('../controllers/survey');
 
 /* GET home page. */
 router.get('/', indexController.DisplayHomePage);
@@ -19,17 +20,26 @@ router.get('/', indexController.DisplayHomePage);
 /* GET home page. */
 router.get('/home', indexController.DisplayHomePage);
 
-/* GET Products page. */
-router.get('/projects', indexController.DisplayProductsPage);
+/* GET Survey page. */
+router.get('/survey', indexController.DisplaySurveyPage);
 
-/* GET Services page. */
-router.get('/services', indexController.DisplayServicesPage);
+/* GET Survey List page. */
+router.get('/survey-list', surveyController.DisplaySurveyListPage);
 
-/* GET About page. */
-router.get('/about', indexController.DisplayAboutPage);
+/* GET Create Survey page. */
+router.get('/survey-create', surveyController.DisplaySurveyCreatePage);
 
-/* GET Contact page. */
-router.get('/contact', indexController.DisplayContactPage);
+// Post process create page
+router.post('/surveycreate', surveyController.ProcessSurveyCreatePage);
+
+/* GET Edit Survey page. */
+router.get('/survey-edit/:id', surveyController.DisplaySurveyEditPage);
+
+// Post process edit page
+router.post('/survey-edit/:id', surveyController.ProcessSurveyEditPage);
+
+/* GET Delete Survey page. */
+router.get('/delete/:id', surveyController.DisplaySurveyDeletePage);
 
 /* GET - Display Login Page */
 router.get('/login', indexController.DisplayLoginPage);
