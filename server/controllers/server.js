@@ -12,31 +12,10 @@ let User = userModel.Model; // alias
 
 module.exports.DisplayHomePage = (req, res, next) => {
 
-    res.render('index', { title: 'Survey Fox',
-    displayName: req.user ? req.user.displayName : '' });
-  }
-  
-module.exports.DisplaySurveyPage = (req, res, next) => {
-    res.render('survey', { title: 'Survey',
-    displayName: req.user ? req.user.displayName : '' });
-  }
+  res.render('index', { title: 'Survey Fox',
+  displayName: req.user ? req.user.displayName : '' });
+}
 
-//Render survey-list View
-  module.exports.DisplaySurveyListPage = (req, res, next) => {
-
-    res.render('content/survey-list', { title: 'Survey List',
-    displayName: req.user ? req.user.displayName : '' });
-  }
-
-module.exports.DisplaySurveyCreatePage = (req, res, next) => {
-    res.render('surveycreate', { title: 'Create a Survey',
-    displayName: req.user ? req.user.displayName : '' });
-  }
-  
-module.exports.DisplaySurveyEditPage = (req, res, next) => {
-    res.render('surveyedit', { title: 'Edit a Survey',
-    displayName: req.user ? req.user.displayName : '' });
-  }
 
 module.exports.DisplayLoginPage = (req, res, next) => {
   // check if the user is already logged in
