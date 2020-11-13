@@ -12,7 +12,6 @@ let express = require('express');
 let router = express.Router();
 
 let indexController = require('../controllers/server');
-let surveyController = require('../controllers/survey');
 
 /* GET home page. */
 router.get('/', indexController.DisplayHomePage);
@@ -24,22 +23,13 @@ router.get('/home', indexController.DisplayHomePage);
 router.get('/survey', indexController.DisplaySurveyPage);
 
 /* GET Survey List page. */
-router.get('/surveylist', surveyController.DisplaySurveyListPage);
+router.get('/survey-list', indexController.DisplaySurveyListPage);
 
 /* GET Create Survey page. */
-router.get('/surveycreate', surveyController.DisplaySurveyCreatePage);
-
-// Post process create page
-router.post('/surveycreate', surveyController.ProcessSurveyCreatePage);
+router.get('/surveycreate', indexController.DisplaySurveyCreatePage);
 
 /* GET Edit Survey page. */
-router.get('/surveyedit/:id', surveyController.DisplaySurveyEditPage);
-
-// Post process edit page
-router.post('/surveyedit/:id', surveyController.ProcessSurveyEditPage);
-
-/* GET Delete Survey page. */
-router.get('/delete/:id', surveyController.DisplaySurveyDeletePage);
+router.get('/surveyedit', indexController.DisplaySurveyEditPage);
 
 /* GET - Display Login Page */
 router.get('/login', indexController.DisplayLoginPage);
