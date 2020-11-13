@@ -13,92 +13,14 @@ let passport = require('passport');
 let userModel = require('../models/user');
 let User = userModel.Model; // alias
 
-// connect the survey model
-let surveyModel = require('../models/survey');
-let Survey = surveyModel.Model; // alias
-
 module.exports.DisplayHomePage = (req, res, next) => {
 
-    console.log("Home Page Controller");
-  }
+  console.log("Home Page Controller");
 
-module.exports.DisplaySurveyListPage = (req, res, next) => {
-    res.render('surveylist', { title: 'Survey List',
-    displayName: req.user ? req.user.displayName : '' 
-    });
-  }
-
-module.exports.DisplaySurveyCreatePage = (req, res, next) => {
-    res.render('surveycreate', { title: 'Create a Survey',
-    displayName: req.user ? req.user.displayName : '' 
-    });
-
-  }
-  
-module.exports.ProcessSurveyCreatePage = (req, res, next) => {
-  
-  let newSurvey = Survey({
-      "ownerID": req.body.ownerID,
-      "questions": req.body.questions
-    });
-
-    Survey.create(newSurvey, (err, Survey) => {
-      if(err)
-      {
-        console.log(err);
-        res.end(err);
-      }
-      else
-      {
-        res.redirect('/surveylist');
-      }
-    });
-  }
-  
-module.exports.DisplaySurveyEditPage = (req, res, next) => {
-    res.render('surveyedit/:id', { title: 'Edit a Survey',
-    displayName: req.user ? req.user.displayName : '' 
-    });
-  }
-
-module.exports.ProcessSurveyEditPage = (req, res, next) => {
-  let id = req.params.id
-
-  let updatedSurvey = Survey({
-    "_id": id,
-    "ownerID": req.body.ownerID,
-    "questions": req.body.questions
+  res.render('index', { title: 'Home',
+  displayName: req.user ? req.user.displayName : '' 
   });
-
-  Survey.updateOne({_id: id}, updatedSurvey, (err) => {
-      if(err)
-      {
-        console.log(err);
-        res.end(err);
-      }
-      else
-      {
-        res.redirect('/surveylist');
-    }
-    });
-  }
-
-
-module.exports.DisplaySurveyDeletePage = (req, res, next) => {
-    let id = req.params.id;
-  
-    Survey.remove({_id: id}, (err) => {
-        if(err)
-        {
-          console.log(err);
-          res.end(err);
-        }
-        else
-        {
-          res.redirect('/surveylist');
-        }
-    });
-  };
+}
 
 module.exports.DisplayLoginPage = (req, res, next) => {
   // check if the user is already logged in
