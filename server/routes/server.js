@@ -2,9 +2,9 @@
 
 /* 
 File name: server.js
-Student Name: Joseph Volpe
-StudentID: 301118010
-Date: 10/22/2020
+Student Name: Chadwick Lapis
+StudentID: 300800490
+Date: 11/12/2020
 */
 
 
@@ -19,23 +19,23 @@ router.get('/', indexController.DisplayHomePage);
 /* GET home page. */
 router.get('/home', indexController.DisplayHomePage);
 
+/* GET Survey List page. */
+router.get('/surveylist', indexController.DisplaySurveyListPage);
 
-/* GET Survey page. */
-router.get('/survey-list', indexController.DisplaySurveyList);
+/* GET Create Survey page. */
+router.get('/surveycreate', indexController.DisplaySurveyCreatePage);
 
+// Post process create page
+router.post('/surveycreate', indexController.ProcessSurveyCreatePage);
 
+/* GET Edit Survey page. */
+router.get('/surveyedit/:id', indexController.DisplaySurveyEditPage);
 
-/* GET Products page. */
-router.get('/projects', indexController.DisplayProductsPage);
+// Post process edit page
+router.post('/surveyedit/:id', indexController.ProcessSurveyEditPage);
 
-/* GET Services page. */
-router.get('/services', indexController.DisplayServicesPage);
-
-/* GET About page. */
-router.get('/about', indexController.DisplayAboutPage);
-
-/* GET Contact page. */
-router.get('/contact', indexController.DisplayContactPage);
+/* GET Delete Survey page. */
+router.get('/delete/:id', indexController.DisplaySurveyDeletePage);
 
 /* GET - Display Login Page */
 router.get('/login', indexController.DisplayLoginPage);
