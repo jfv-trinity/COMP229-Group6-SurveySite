@@ -2,9 +2,9 @@
 
 /* 
 File name: server.js
-Student Name: Joseph Volpe
-StudentID: 301118010
-Date: 10/22/2020
+Student Name: Chadwick Lapis
+StudentID: 300800490
+Date: 11/12/2020
 */
 
 
@@ -28,8 +28,17 @@ router.get('/surveylist', indexController.DisplaySurveyListPage);
 /* GET Create Survey page. */
 router.get('/surveycreate', indexController.DisplaySurveyCreatePage);
 
+// Post process create page
+router.post('/surveycreate', indexController.ProcessSurveyCreatePage);
+
 /* GET Edit Survey page. */
-router.get('/surveyedit', indexController.DisplaySurveyEditPage);
+router.get('/surveyedit/:id', indexController.DisplaySurveyEditPage);
+
+// Post process edit page
+router.post('/surveyedit/:id', indexController.ProcessSurveyEditPage);
+
+/* GET Delete Survey page. */
+router.get('/delete/:id', indexController.DisplaySurveyDeletePage);
 
 /* GET - Display Login Page */
 router.get('/login', indexController.DisplayLoginPage);
