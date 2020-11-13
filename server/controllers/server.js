@@ -20,16 +20,6 @@ let Survey = surveyModel.Model; // alias
 module.exports.DisplayHomePage = (req, res, next) => {
 
     console.log("Home Page Controller");
-
-    res.render('index', { title: 'Home',
-    displayName: req.user ? req.user.displayName : '' 
-    });
-  }
-  
-module.exports.DisplaySurveyPage = (req, res, next) => {
-    res.render('survey', { title: 'Survey',
-    displayName: req.user ? req.user.displayName : '' 
-    });
   }
 
 module.exports.DisplaySurveyListPage = (req, res, next) => {
