@@ -30,7 +30,7 @@ router.get('/survey-list', surveyController.DisplaySurveyListPage);
 router.get('/survey-create', surveyController.DisplaySurveyCreatePage);
 
 // Post process create page
-router.post('/surveycreate', surveyController.ProcessSurveyCreatePage);
+router.post('/survey-create', surveyController.ProcessSurveyCreatePage);
 
 /* GET Edit Survey page. */
 router.get('/survey-edit/:id', surveyController.DisplaySurveyEditPage);
