@@ -12,10 +12,9 @@ let User = userModel.Model; // alias
 
 module.exports.DisplayHomePage = (req, res, next) => {
 
-  res.render('index', { title: 'Survey Fox',
-  displayName: req.user ? req.user.displayName : '' });
-}
-
+    res.render('index', { title: 'Survey Fox',
+    displayName: req.user ? req.user.displayName : '' });
+  }
 
 module.exports.DisplayLoginPage = (req, res, next) => {
   // check if the user is already logged in

@@ -13,29 +13,21 @@ let passport = require('passport');
 let surveyModel = require('../models/survey');
 let Survey = surveyModel.Model; // alias
 
-module.exports.DisplayHomePage = (req, res, next) => {
-
-  console.log("Home Page Controller");
-
-  res.render('index', { title: 'Home',
-  displayName: req.user ? req.user.displayName : '' 
-  });
-}
-  
+//Render survey-list View
 module.exports.DisplaySurveyPage = (req, res, next) => {
-  res.render('survey', { title: 'Survey',
+  res.render('content/survey', { title: 'Survey',
   displayName: req.user ? req.user.displayName : '' 
   });
 }
 
 module.exports.DisplaySurveyListPage = (req, res, next) => {
-  res.render('survey-list', { title: 'Survey List',
+  res.render('content/survey-list', { title: 'Survey List',
   displayName: req.user ? req.user.displayName : '' 
   });
 }
 
 module.exports.DisplaySurveyCreatePage = (req, res, next) => {
-  res.render('survey-create', { title: 'Create a Survey',
+  res.render('content/survey-create', { title: 'Create a Survey',
   displayName: req.user ? req.user.displayName : '' 
   });
 
@@ -48,13 +40,13 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
     "OwnerID": req.body.OwnerID,
     "QuestionObject1.Question": req.body.QuestionObject1Question,
     "QuestionObject1.Choices": req.body.QuestionObject1Choices,
-    "QuestionObject1.TotalAnswers": req.body.QuestionObject1TotalAnswers,
+    "QuestionObject1.TotalAnswers": [],
     "QuestionObject2.Question": req.body.QuestionObject2Question,
     "QuestionObject1.Choices": req.body.QuestionObject2Choices,
-    "QuestionObject1.TotalAnswers": req.body.QuestionObject2TotalAnswers,
+    "QuestionObject1.TotalAnswers": [],
     "QuestionObject3.Question": req.body.QuestionObject3Question,
     "QuestionObject1.Choices": req.body.QuestionObject3Choices,
-    "QuestionObject1.TotalAnswers": req.body.QuestionObject3TotalAnswers,
+    "QuestionObject1.TotalAnswers": [],
   });
 
   Survey.create(newSurvey, (err, Survey) => {
@@ -71,7 +63,7 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
 }
   
 module.exports.DisplaySurveyEditPage = (req, res, next) => {
-  res.render('survey-edit/:id', { title: 'Edit a Survey',
+  res.render('content/survey-edit/:id', { title: 'Edit a Survey',
   displayName: req.user ? req.user.displayName : '' 
   });
 }

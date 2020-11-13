@@ -21,7 +21,7 @@ router.get('/', indexController.DisplayHomePage);
 router.get('/home', indexController.DisplayHomePage);
 
 /* GET Survey page. */
-router.get('/survey', indexController.DisplaySurveyPage);
+router.get('/survey', surveyController.DisplaySurveyPage);
 
 /* GET Survey List page. */
 router.get('/survey-list', surveyController.DisplaySurveyListPage);
