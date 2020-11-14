@@ -20,13 +20,13 @@ let SurveySchema = Schema({
     },    
     QuestionObject2: // An array of question objects    
     { 
-        QuestionBeingAsked : String, // The Question being asked
+        Question : String, // The Question being asked
         Choices: [String], // The Choices of answer
         TotalAnswers : [Number] // The Number of times a choice has been picked
     },
     QuestionObject3: // An array of question objects    
     { 
-        QuestionBeingAsked : String, // The Question being asked
+        Question : String, // The Question being asked
         Choices: [String], // The Choices of answer
         TotalAnswers : [Number] // The Number of times a choice has been picked
     }    
