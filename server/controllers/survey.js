@@ -38,15 +38,39 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
   let newSurvey = Survey({
     "SurveyName": req.body.SurveyName,
     "OwnerID": req.body.OwnerID,
+    
     "QuestionObject1.Question": req.body.QuestionObject1Question,
-    "QuestionObject1.Choices": req.body.QuestionObject1Choices,
-    "QuestionObject1.TotalAnswers": [],
+    // Each one of those requests is one of the choices in the array, Not sure how to pass in a array from the EJs File
+    "QuestionObject1.Choices": [
+        req.body.QuestionObject1Choice1,
+        req.body.QuestionObject1Choice2,
+        req.body.QuestionObject1Choice3,
+        req.body.QuestionObject1Choice4
+    ],
+    // Instantiate the total Answers to 0000 as the survey is being created
+    "QuestionObject1.TotalAnswers": [0,0,0,0],
+    
     "QuestionObject2.Question": req.body.QuestionObject2Question,
-    "QuestionObject1.Choices": req.body.QuestionObject2Choices,
-    "QuestionObject1.TotalAnswers": [],
+    // Each one of those requests is one of the choices in the array, Not sure how to pass in a array from the EJs File
+    "QuestionObject1.Choices": [
+        req.body.QuestionObject2Choice1,
+        req.body.QuestionObject2Choice2,
+        req.body.QuestionObject2Choice3,
+        req.body.QuestionObject2Choice4
+    ],
+    // Instantiate the total Answers to 0000 as the survey is being created
+    "QuestionObject1.TotalAnswers": [0,0,0,0],
+
     "QuestionObject3.Question": req.body.QuestionObject3Question,
-    "QuestionObject1.Choices": req.body.QuestionObject3Choices,
-    "QuestionObject1.TotalAnswers": [],
+    // Each one of those requests is one of the choices in the array, Not sure how to pass in a array from the EJs File
+    "QuestionObject3.Choices": [
+        req.body.QuestionObject3Choice1,
+        req.body.QuestionObject3Choice2,
+        req.body.QuestionObject3Choice3,
+        req.body.QuestionObject3Choice4
+    ],
+    // Instantiate the total Answers to 0000 as the survey is being created
+    "QuestionObject1.TotalAnswers": [0,0,0,0],
   });
 
   Survey.create(newSurvey, (err, Survey) => {
