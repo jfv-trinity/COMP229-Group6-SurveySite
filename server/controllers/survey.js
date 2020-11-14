@@ -15,8 +15,17 @@ let Survey = surveyModel.Model; // alias
 
 //Render survey-list View
 module.exports.DisplaySurveyPage = (req, res, next) => {
-  res.render('content/survey', { title: 'Survey',
-  displayName: req.user ? req.user.displayName : '' 
+
+  Survey.find( (err, Survey) => {
+    if (err) {
+      return console.error(err);
+    }
+    else {
+      res.render('content/survey', { title: 'Survey',
+      displayName: req.user ? req.user.displayName : '',
+      Survey: Survey
+      });
+    }
   });
 }
 
