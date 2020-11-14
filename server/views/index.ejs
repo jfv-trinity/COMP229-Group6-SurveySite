@@ -1,32 +1,21 @@
 <%- include('./partials/header.ejs') -%>
 
-    <div class="container">
-
-        <div class="jumbotron">
-          <h1 class="display-4"><%= title %></h1>
-
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="/Assets/images/logo.png" />
+      </div>
+      <div class="col-md-6">
+        <h1 class="display-4"><%= title %></h1>
+        <a class="btn btn-primary btn-lg" href="/survey-list" role="button">Start Survey ></a>
       </div>
 
-      <% if(title == 'Component List') { %>
-        <%- include('./content/component-list.ejs') -%> 
-      <% } else if(title == 'Add Component') { %>
-        <%- include('./content/add-component.ejs') -%> 
-      <% } else if(title == 'Edit Component') { %>
-        <%- include('./content/edit-component.ejs') -%> 
-      <% } %>
-
-      <% if(title == 'Business List') { %>
-        <%- include('./content/business-list.ejs') -%> 
-      <% } else if(title == 'Add Contact') { %>
-        <%- include('./content/add-business.ejs') -%> 
-      <% } else if(title == 'Edit Contacts') { %>
-        <%- include('./content/edit-business.ejs') -%> 
-      <% } %>
-
     </div>
+  </div>
+</div>
+</div>
 
-    <%- include('./partials/bottomnav.ejs') -%>
+<%- include('./partials/bottomnav.ejs') -%>
 <%- include('./partials/footer.ejs') -%>
-    
 
-    

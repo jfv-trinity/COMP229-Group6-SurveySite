@@ -1,8 +1,5 @@
 /* 
 File name: server.js
-Student Name: Joseph Volpe
-StudentID: 301118010
-Date: 10/22/2020
 */
 
 let express = require('express');
@@ -15,29 +12,7 @@ let User = userModel.Model; // alias
 
 module.exports.DisplayHomePage = (req, res, next) => {
 
-    console.log("Home Page Controller");
-
-    res.render('index', { title: 'Home',
-    displayName: req.user ? req.user.displayName : '' });
-  }
-  
-module.exports.DisplayProductsPage = (req, res, next) => {
-    res.render('projects', { title: 'Products',
-    displayName: req.user ? req.user.displayName : '' });
-  }
-
-module.exports.DisplayServicesPage = (req, res, next) => {
-    res.render('services', { title: 'Services',
-    displayName: req.user ? req.user.displayName : '' });
-  }
-
-module.exports.DisplayAboutPage = (req, res, next) => {
-    res.render('me', { title: 'About',
-    displayName: req.user ? req.user.displayName : '' });
-  }
-  
-module.exports.DisplayContactPage = (req, res, next) => {
-    res.render('contact', { title: 'Contact',
+    res.render('index', { title: 'Survey Fox',
     displayName: req.user ? req.user.displayName : '' });
   }
 
@@ -84,7 +59,7 @@ module.exports.ProcessLoginPage = (req, res, next) => {
         return next(err);
       }
 
-      return res.redirect('/business-list')
+      return res.redirect('/survey-list')
     });
   })(req, res, next);
 }
