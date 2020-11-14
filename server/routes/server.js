@@ -21,7 +21,7 @@ router.get('/', indexController.DisplayHomePage);
 router.get('/home', indexController.DisplayHomePage);
 
 /* GET Survey page. */
-router.get('/survey', surveyController.DisplaySurveyPage);
+//router.get('/survey', surveyController.DisplaySurveyPage);
 
 /* GET Survey List page. */
 router.get('/survey-list', surveyController.DisplaySurveyListPage);
@@ -39,7 +39,7 @@ router.get('/survey-edit/:id', surveyController.DisplaySurveyEditPage);
 router.post('/survey-edit/:id', surveyController.ProcessSurveyEditPage);
 
 /* GET Delete Survey page. */
-router.get('/delete/:id', surveyController.DisplaySurveyDeletePage);
+router.get('/survey-delete/:id', surveyController.DisplaySurveyDeletePage);
 
 /* GET - Display Login Page */
 router.get('/login', indexController.DisplayLoginPage);

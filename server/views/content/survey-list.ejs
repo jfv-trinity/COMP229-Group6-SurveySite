@@ -27,16 +27,16 @@
               </thead>
               <tbody>
               <!-- Template Row -->
-              <% for (let count = 0; count < Survey.length; count++) { %>
+              <% for (let count = 0; count < surveys.length; count++) { %>
               <tr>
-                <td><%= Survey[count].SurveyName %></td>
+                <td><%= surveys[count].SurveyName %></td>
                 
                 <td class="text-center">
-                  <a href="/survey-edit" class="btn btn-primary btn-sm">
+                  <a href="/survey-edit/<%= surveys[0]._id%>" class="btn btn-primary btn-sm">
                   <i class="fas fa-pencil-alt"></i> Edit</a>
               </td>
               <td class="text-center">
-                  <a href="/survey-delete" class="btn btn-danger btn-sm">
+                  <a href="/survey-delete/<%= surveys[count]._id%>" class="btn btn-danger btn-sm">
                   <i class="fas fa-trash-alt"></i> Delete</a>
               </td>
               </tr>
