@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-offset-1 col-md-10">
         <h3 display-4>Survey List </h3>
-        <a href="books/add" class="btn btn-primary"><i class="fa fa-plus"></i> Add a survey</a>
+        <a href="/survey-create" class="btn btn-primary"><i class="fa fa-plus"></i> Add a survey</a>
         <br>
         <div class="table-responsive">
           <table class="table table-bordered table-striped table-hover">
@@ -14,9 +14,9 @@
               <tr>
                 <th>Title</th>
                 
+                <th>Edit</th>
                 
-                
-                
+                <th>Delete</th>
                 <!--incase we need more columns-->
                 <!--
                 <th class="text-center"></th>
@@ -27,16 +27,16 @@
               </thead>
               <tbody>
               <!-- Template Row -->
-              <% for (let count = 1; count < 5; count++) { %>
+              <% for (let count = 0; count < surveys.length; count++) { %>
               <tr>
-                <td><%=" Survey " +count %></td>
+                <td><%= surveys[count].SurveyName %></td>
                 
                 <td class="text-center">
-                  <a href="/" class="btn btn-primary btn-sm">
+                  <a href="/survey-edit/<%= surveys[0]._id%>" class="btn btn-primary btn-sm">
                   <i class="fas fa-pencil-alt"></i> Edit</a>
               </td>
               <td class="text-center">
-                  <a href="/" class="btn btn-danger btn-sm">
+                  <a href="/survey-delete/<%= surveys[count]._id%>" class="btn btn-danger btn-sm">
                   <i class="fas fa-trash-alt"></i> Delete</a>
               </td>
               </tr>
