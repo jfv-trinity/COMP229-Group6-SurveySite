@@ -116,7 +116,7 @@ module.exports.ProcessRegisterPage = (req, res, next) =>
       // choice 2 - authenticate them and then redirect them
 
       return passport.authenticate('local')(req, res, () => {
-        res.redirect('/component-list');
+        res.redirect('/survey-list');
       });
     }
   });
