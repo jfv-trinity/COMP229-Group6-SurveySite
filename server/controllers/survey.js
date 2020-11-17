@@ -95,8 +95,9 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
     }
     else
     {
-      res.redirect('/survey-list');
+      return res.redirect('/survey-list');
     }
+
   });
 }
   
