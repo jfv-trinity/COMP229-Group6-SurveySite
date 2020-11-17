@@ -10,7 +10,7 @@
     <link rel='stylesheet' href='/Content/app.css' />
   </head>
   <body>
-
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="/">
         <img src="/Assets/images/logo.png" alt="Logo" width="40" height="40">
@@ -22,17 +22,24 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
 
+          <% if(typeof displayName == 'string' && displayName) { %>
           <li class="nav-item active">
             <a class="nav-link" href="/home"><i class="fas fa-home fa-lg"></i> Home </a>
           </li>
-          
+          <% } else { %>
+            <!-- <li class="nav-item active">
+              <a class="nav-link" href="/home"><i class="fas fa-home fa-lg"></i> Home </a>
+            </li> -->
+          <% } %>
+
+
           <% if(typeof displayName == 'string' && displayName) { %>
           <li class="nav-item active">
             <a class="nav-link" href="/survey-list"><i class="far fa-address-book fa-lg"></i></i> Survey List </a>
           </li>
           <% } else { %>
-            <li class="nav-item active">
-              <a class="nav-link" href="/login"><i class="far fa-address-book fa-lg"></i></i> Survey List </a>
+            <!---<li class="nav-item active">
+              <a class="nav-link" href="/login"><i class="far fa-address-book fa-lg"></i></i> Survey List </a>--->
           <% } %>
 
           <% if(typeof displayName == 'string' && displayName) { %>
