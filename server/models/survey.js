@@ -13,21 +13,13 @@ let SurveySchema = Schema({
     SurveyName: String,
     SurveyDescription: String,
     OwnerID: String, // The ID of the owner (Used for displaying the database owner in the surveyList)
-    QuestionObject1: // An array of question objects    
-    { 
-        Question : String, // The Question being asked
-        Choices: [String], // The Choices of answer
-    },    
-    QuestionObject2: // An array of question objects    
-    { 
-        QuestionBeingAsked : String, // The Question being asked
-        Choices: [String], // The Choices of answer
-    },
-    QuestionObject3: // An array of question objects    
-    { 
-        QuestionBeingAsked : String, // The Question being asked
-        Choices: [String], // The Choices of answer
-    }    
+    QuestionObject: // An array of question objects    
+    [
+        {        
+            Question : String, // The Question being asked
+            Choices: [String], // The Choices of answer
+        }
+    ]
 },
 {
     collection: 'surveys'

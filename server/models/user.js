@@ -14,18 +14,7 @@ let UserSchema = Schema({
    username: String,
    //password: string,
    email: String,
-   displayName: String,
-   Questions: [{ type: String }],
-   created: 
-   {
-        type: Date,
-        default: Date.now()
-   },
-   updated:
-   {
-       type: Date,
-       default: Date.now()
-   }
+   displayName: String
 },
 {
     collection: 'users'
