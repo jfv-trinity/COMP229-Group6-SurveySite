@@ -17,7 +17,7 @@
         <div class="offset-md-3 col-md-6">
             <h1><%= title %></h1>
 
-            <form class="form" method="POST">
+            <form class="form" method="POST" id="surveyForm">
                 <div class="form-group">
                     <label for="SurveyNameTextField">Survey Name: </label>
                     <input type="text" class="form-control"
@@ -25,33 +25,54 @@
                     placeholder="Enter the title for your servey"
                     name="SurveyName" 
                     required>
-                </div>
+                </div>          
                 
-                <!-- This form Group is for a Question and its choices-->
-                <% for (let questionNumber = 0; questionNumber < SurveyQuestions.length; questionNumber++) { %>
-                    <div class="formGroup">                
+                <div id="questions">
+                    <div class="formGroup" id = "Question">                       
                         
                         <!-- Question -->                        
                         <div class = "form-group">
-                            <label for="Question">Question</label>
-                            <input type="text" class="form-control"
-                            id="Question"
-                            placeholder="Enter the Question"
-                            name="SurveyName"
-                            required>
-                            
+                        <label for="Question">Question</label>
+                        <input type="text" class="form-control"
+                        id="Question0"
+                        placeholder="Enter the Question"
+                        name="Question0"
+                        required>
+                                
                         <!-- Choices -->
-                        <% for (let choiceNumber = 0; choiceNumber < SurveyQuestions[questionNumber].length; choiceNumber++) { %>
-                            <label for="Choice">Choice</label>
-                            <input type="text" class="form-control"
-                            id="Choice"
-                            placeholder="Enter a choice"
-                            name="SurveyName"
-                            required>
-                        <% } %> 
-                        </div>
-                    </div>
-                <% } %>
+                        <label for="Choice">Choice</label>
+                        <input type="text" class="form-control"
+                        id="Choice0"
+                        placeholder="Enter a choice"
+                        name="Choice0"
+                        required>
+
+                        <label for="Choice">Choice</label>
+                        <input type="text" class="form-control"
+                        id="Choice1"
+                        placeholder="Enter a choice"
+                        name="Choice1"
+                        required>
+
+                        <label for="Choice">Choice</label>
+                        <input type="text" class="form-control"
+                        id="Choice2"
+                        placeholder="Enter a choice"
+                        name="Choice2"
+                        required>
+
+                        <label for="Choice">Choice</label>
+                        <input type="text" class="form-control"
+                        id="Choice3"
+                        placeholder="Enter a choice"
+                        name="Choice4"
+                        required>                                         
+                        </div>                    
+                    </div> 
+                </div>              
+
+                <button class="btn btn-primary" type="button" id="addQuestion">
+                    <i class="fas fa-create"></i>Add Question</button>
 
                 <button class="btn btn-primary" type="submit">
                     <i class="fas fa-create"></i> Submit Survey</button>
