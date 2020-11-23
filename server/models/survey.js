@@ -19,7 +19,9 @@ let SurveySchema = Schema({
             Question : String, // The Question being asked
             Choices: [String], // The Choices of answer
         }
-    ]
+    ],
+    ExpireDate : Date,
+    SurveyActive: Boolean
 },
 {
     collection: 'surveys'
