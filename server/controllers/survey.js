@@ -25,7 +25,7 @@ module.exports.DisplaySurveyPage = (req, res, next) => {
 
 module.exports.DisplaySurveyListPage = (req, res, next) => {
   
-  Survey.find( (err, surveys) => {
+  Survey.find({OwnerID: req.user._id}, (err, surveys) => {
     if (err) {
       return console.error(err);
     }
@@ -51,7 +51,7 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
   
   let newSurvey = Survey({
     "SurveyName": req.body.SurveyName,
-    "OwnerID": req.body.OwnerID,
+    "OwnerID": req.user._id,
     
     "QuestionObject1.Question": req.body.QuestionObject1Question,
     // Each one of those requests is one of the choices in the array, Not sure how to pass in a array from the EJs File
@@ -129,7 +129,7 @@ module.exports.ProcessSurveyEditPage = (req, res, next) => {
   let updatedSurvey = Survey({
     "_id": id,
     "SurveyName": req.body.SurveyName,
-    "OwnerID": req.body.OwnerID,
+    "OwnerID": req.user._id,
     
     "QuestionObject1.Question": req.body.QuestionObject1Question,
     // Each one of those requests is one of the choices in the array, Not sure how to pass in a array from the EJs File
