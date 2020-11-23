@@ -10,7 +10,47 @@
         <h1 class="display-4"><%= title %></h1>
         <a class="btn btn-primary btn-lg" href="/survey-list" role="button">Start Survey ></a>
       </div>
-
+      <div class="container"style="text-align:center">
+        <div class="row">
+          <div class="col-md-offset-1 col-md-10">
+            <h3 class="display-10">Active Survey List </h3>
+           
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    
+                    <th>Take Survey</th>
+                    
+                    
+    
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <!-- Template Row -->
+                  <% for (let count = 0; count < surveys.length; count++) { %>
+                  <tr>
+                    <td><%= surveys[count].SurveyName %></td>
+                    
+                    <td class="text-center">
+                      <a href="<%= surveys[0]._id%>" class="btn btn-primary btn-sm">
+                        <i class="fas fa-angle-right"></i> Start</i></a>
+                  </td>
+                 
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+             <div class="col-md-offset-1 col-md-10 text-center">
+              <ul class="pagination pagination-lg pager" id="myPager"></ul>
+            </div>
+            Note:  Follow this link to go to survey question page http://localhost:3000/survey-question<br>
+            Remove this note after coding
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

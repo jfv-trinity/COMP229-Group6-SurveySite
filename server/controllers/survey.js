@@ -46,7 +46,12 @@ module.exports.DisplaySurveyCreatePage = (req, res, next) => {
   });
 
 }
-  
+module.exports.DisplaySurveyQuestionPage = (req, res, next) => {
+  res.render('content/survey-question', { title: 'Pass survey name here !',
+  displayName: req.user ? req.user.displayName : '' 
+  });
+
+}
 module.exports.ProcessSurveyCreatePage = (req, res, next) => {
   
   let newSurvey = Survey({
