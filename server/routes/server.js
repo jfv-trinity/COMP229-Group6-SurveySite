@@ -52,6 +52,11 @@ router.post('/survey-edit/:id', requiredAuth, surveyController.ProcessSurveyEdit
 /* GET Delete Survey page. */
 router.get('/survey-delete/:id', requiredAuth, surveyController.DisplaySurveyDeletePage);
 
+
+/* GET Survey Question page. */
+router.get('/survey-question', requiredAuth, surveyController.DisplaySurveyQuestionPage);
+
+
 /* GET - Display Login Page */
 router.get('/login', indexController.DisplayLoginPage);
 

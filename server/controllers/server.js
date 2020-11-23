@@ -10,12 +10,26 @@ let passport = require('passport');
 let userModel = require('../models/user');
 let User = userModel.Model; // alias
 
+//survey model
+let surveyModel = require('../models/survey');
+let Survey = surveyModel.Model
 module.exports.DisplayHomePage = (req, res, next) => {
 
-    res.render('index', { title: 'Survey Fox',
-    displayName: req.user ? req.user.displayName : '' });
+  Survey.find( (err, surveys) => {
+    if (err) {
+      return console.error(err);
+    }
+    else {
+      res.render('index',
+      { 
+        title: 'Survey Fox',
+        surveys: surveys,
+        displayName: req.user ? req.user.displayName : ''
+      });
+    }
+  });
   }
-
+ // module.exports.DisplaySurveyListPage = (req, res, next) => {}
 module.exports.DisplayLoginPage = (req, res, next) => {
   // check if the user is already logged in
   if(!req.user)
