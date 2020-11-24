@@ -2,18 +2,23 @@
 
 
 <!-- MAIN CONTENT -->
+
+
 <div class="container">
+ 
     <div class="row">
-      <div class="col-md-offset-1 col-md-10">
+      <div class="col-md-offset-1 col-md-12">
         <h3 display-4>Survey List </h3>
         <a href="/survey-create" class="btn btn-primary"><i class="fa fa-plus"></i> Add a survey</a>
+        <br>
         <br>
         <div class="table-responsive">
           <table class="table table-bordered table-striped table-hover">
             <thead>
               <tr>
                 <th>Title</th>
-                
+                <th>Last Edit</th>
+                <th>Creat Time</th>
                 <th>Edit</th>
                 
                 <th>Delete</th>
@@ -29,8 +34,11 @@
               <!-- Template Row -->
               <% for (let count = 0; count < surveys.length; count++) { %>
               <tr>
-                <td><%= surveys[count].SurveyName %></td>
                 
+                
+                <td><%= surveys[count].SurveyName %></td>
+                <td class="updatedTime"><%= surveys[count].updatedAt %> </td>
+                <td class="createdTime"><%= surveys[count].createdAt %> </td>
                 <td class="text-center">
                   <a href="/survey-edit/<%= surveys[0]._id%>" class="btn btn-primary btn-sm">
                   <i class="fas fa-pencil-alt"></i> Edit</a>
@@ -50,6 +58,8 @@
       </div>
     </div>
   </div>
+ 
+  
 
 
 
