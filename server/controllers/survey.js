@@ -14,14 +14,6 @@ let surveyModel = require("../models/survey");
 let Survey = surveyModel.Model; // alias
 
 //Render survey-list View
-/*
-module.exports.DisplaySurveyPage = (req, res, next) => {
-
-  res.render('content/survey', { title: 'Survey List',
-  displayName: req.user ? req.user.displayName : '' 
-  });
-}
-*/
 
 module.exports.DisplaySurveyListPage = (req, res, next) => {
   
@@ -61,17 +53,34 @@ function dateFormat(msg){
   return `${year}-${month}-${day}  ${hour}:${min}:${second}`//这个不是单引号，而是tab键上面的键
 }
 
+
+module.exports.DisplaySurveyQuestionPage = (req, res, next) => {
+    let id = req.params.id;
+    
+    Survey.findById(id, (err, survey) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        } else {
+            res.render("content/survey-question", {
+                title: "",
+                displayName: req.user ? req.user.displayName : "",
+                survey: survey,
+            });
+        }
+    });
+};
+
+module.exports.ProcessSurveyQuestionPage = (req, res, next) => {
+    res.redirect("/");
+};
+
+
 module.exports.DisplaySurveyCreatePage = (req, res, next) => {
     res.render("content/survey-create", {
         title: "Create a Survey",
         displayName: req.user ? req.user.displayName : "",
         SurveyQuestions: [ [""] ]
-    });
-};
-module.exports.DisplaySurveyQuestionPage = (req, res, next) => {
-    res.render("content/survey-question", {
-        title: "Pass survey name here !",
-        displayName: req.user ? req.user.displayName : "",
     });
 };
 module.exports.ProcessSurveyCreatePage = (req, res, next) => {
@@ -123,14 +132,7 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
     });
 };
 
-<<<<<<< HEAD
-=======
-  });
-}
-  
 
-
->>>>>>> e055b5955d93ab1bf1b8b8827f8da3d451c7f9d2
 module.exports.DisplaySurveyEditPage = (req, res, next) => {
     let id = req.params.id;
 
