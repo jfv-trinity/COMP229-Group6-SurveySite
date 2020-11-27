@@ -2,37 +2,70 @@
 
 
 <div class="container">
-        <div class="row">
-                <div class="offset-md-3 col-md-6">
-                    <h1><%= title %></h1>
-    <h4 class="display-10">Which option do you want to choose?</h3>
-    <div class="form-check">
-       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="a" checked>
-       <label class="form-check-label" for="exampleRadios1">
-       A
-       </label>
-    </div>
-    <div class="form-check">
-       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="b">
-       <label class="form-check-label" for="exampleRadios2">
-       B
-       </label>
-    </div>
-    <div class="form-check">
-       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="c">
-       <label class="form-check-label" for="exampleRadios3">
-       C
-       </label>
-    </div>
-    <div class="form-check">
-       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="d">
-       <label class="form-check-label" for="exampleRadios4">
-       D
-       </label>
-    </div>
-    <button class="btn btn-primary" type="submit">
-            <i class="fas fa-chevron-circle-right"></i> Next</button>
-</div>
+   <div class="row">
+      <div class="offset-md-3 col-md-6">
+         <h1><%= survey.SurveyName %></h1>
+
+         <form class="form" method="POST">
+            <h4 class="display-10"><%= survey.QuestionObject1.Question %></h4>
+            <div class="form-group">
+               <input class="form-check-input" type="radio" name="Q1" id="Q1C1" value="a" checked>
+               <label class="form-check-label" for="Q1C1"><%= survey.QuestionObject1.Choices[0] %></label>
+            </div>
+            <div class="form-group">
+               <input class="form-check-input" type="radio" name="Q1" id="Q1C2" value="b">
+               <label class="form-check-label" for="Q1C2"><%= survey.QuestionObject1.Choices[1] %></label>
+            </div>
+            <div class="form-group">
+               <input class="form-check-input" type="radio" name="Q1" id="Q1C3" value="c">
+               <label class="form-check-label" for="Q1C3"><%= survey.QuestionObject1.Choices[2] %></label>
+            </div>
+            <div class="form-group">
+               <input class="form-check-input" type="radio" name="Q1" id="Q1C4" value="d">
+               <label class="form-check-label" for="Q1C4"><%= survey.QuestionObject1.Choices[3] %></label>
+            </div>
+            
+            <h4 class="display-10"><%= survey.QuestionObject2.Question %></h4>
+            <div class="form-group">
+               <input class="form-check-input" type="radio" name="Q2" id="Q1C1" value="a" checked>
+               <label class="form-check-label" for="Q2C1"><%= survey.QuestionObject2.Choices[0] %></label>
+            </div>
+            <div class="form-group">
+               <input class="form-check-input" type="radio" name="Q2" id="Q1C2" value="b">
+               <label class="form-check-label" for="Q2C2"><%= survey.QuestionObject2.Choices[1] %></label>
+            </div>
+            <div class="form-group">
+               <input class="form-check-input" type="radio" name="Q2" id="Q2C3" value="c">
+               <label class="form-check-label" for="Q2C3"><%= survey.QuestionObject2.Choices[2] %></label>
+            </div>
+            <div class="form-group">
+               <input class="form-check-input" type="radio" name="Q2" id="Q2C4" value="d">
+               <label class="form-check-label" for="Q2C4"><%= survey.QuestionObject2.Choices[3] %></label>
+            </div>
+            
+            <h4 class="display-10"><%= survey.QuestionObject3.Question %></h4>
+            <div class="form-group">
+               <input class="form-check-input" type="radio" name="Q3" id="Q3C1" value="a" checked>
+               <label class="form-check-label" for="Q3C1"><%= survey.QuestionObject3.Choices[0] %></label>
+            </div>
+            <div class="form-group">
+               <input class="form-check-input" type="radio" name="Q3" id="Q3C2" value="b">
+               <label class="form-check-label" for="Q3C2"><%= survey.QuestionObject3.Choices[1] %></label>
+            </div>
+            <div class="form-group">
+               <input class="form-check-input" type="radio" name="Q3" id="Q3C3" value="c">
+               <label class="form-check-label" for="Q3C3"><%= survey.QuestionObject3.Choices[2] %></label>
+            </div>
+            <div class="form-group">
+               <input class="form-check-input" type="radio" name="Q3" id="Q3C4" value="d">
+               <label class="form-check-label" for="Q3C4"><%= survey.QuestionObject3.Choices[3] %></label>
+            </div>
+            <button class="btn btn-primary" type="submit">
+               <i class="fas fa-create"></i> Submit</button>
+            </div>
+         </form>
+      </div>
+   </div>
 </div>
 <%- include('../partials/bottomnav.ejs') -%>
 <%- include('../partials/footer.ejs') -%>

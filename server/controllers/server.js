@@ -13,6 +13,7 @@ let User = userModel.Model; // alias
 //survey model
 let surveyModel = require('../models/survey');
 let Survey = surveyModel.Model
+
 module.exports.DisplayHomePage = (req, res, next) => {
 
   Survey.find( (err, surveys) => {
