@@ -12,6 +12,8 @@ let Model = mongoose.model;
 let SurveySchema = Schema({
     SurveyName: String,
     OwnerID: String, // The ID of the owner (Used for displaying the database owner in the surveyList)
+    IsActive: Boolean,
+    ExpireDate: Date,
     QuestionObject1: // An array of question objects    
     { 
         Question : String, // The Question being asked
