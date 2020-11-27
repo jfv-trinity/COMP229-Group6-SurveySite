@@ -24,18 +24,42 @@ module.exports.DisplaySurveyPage = (req, res, next) => {
 */
 
 module.exports.DisplaySurveyListPage = (req, res, next) => {
-    Survey.find({ OwnerID: req.user._id }, (err, surveys) => {
-        if (err) {
-            return console.error(err);
-        } else {
-            res.render("content/survey-list", {
-                title: "Survey",
-                surveys: surveys,
-                displayName: req.user ? req.user.displayName : "",
-            });
+  
+  Survey.find({OwnerID: req.user._id}, (err, surveys) => {
+    if (err) {
+      return console.error(err);
+    }
+    else {
+      var results = [];
+      for(var survey of surveys){
+        var temp={
+          SurveyName:survey.SurveyName,
+          updatedAt:dateFormat(survey.updatedAt),
+          createdAt:dateFormat(survey.createdAt),
+          _id:survey._id
         }
-    });
-};
+        results.push(temp);
+      }
+      res.render('content/survey-list',
+      { 
+        title: 'Survey',
+        surveys: results,
+        displayName: req.user ? req.user.displayName : '',
+      });
+    }
+  });
+}
+
+function dateFormat(msg){
+  var date = new Date(msg)
+  var year = date.getFullYear()
+  var month= (date.getMonth()+1).toString().padStart(2,'0')//padStart()是ES6的新方法，即设置字符串的长度，不足的用第二个参数补充
+  var day = (date.getDate()).toString().padStart(2,'0')
+  var hour =date.getHours()
+  var min = (date.getMinutes()).toString().padStart(2,'0')
+  var second = (date.getSeconds()).toString().padStart(2,'0')
+  return `${year}-${month}-${day}  ${hour}:${min}:${second}`//这个不是单引号，而是tab键上面的键
+}
 
 module.exports.DisplaySurveyCreatePage = (req, res, next) => {
     res.render("content/survey-create", {
@@ -99,6 +123,14 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
     });
 };
 
+<<<<<<< HEAD
+=======
+  });
+}
+  
+
+
+>>>>>>> e055b5955d93ab1bf1b8b8827f8da3d451c7f9d2
 module.exports.DisplaySurveyEditPage = (req, res, next) => {
     let id = req.params.id;
 
