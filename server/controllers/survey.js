@@ -17,7 +17,7 @@ let Survey = surveyModel.Model; // alias
 //Render survey-list View
 
 module.exports.DisplaySurveyListPage = (req, res, next) => {
-  
+  // Add Date compairer
   Survey.find({OwnerID: req.user._id}, (err, surveys) => {
     if (err) {
       return console.error(err);
@@ -87,10 +87,7 @@ module.exports.DisplaySurveyCreatePage = (req, res, next) => {
 module.exports.ProcessSurveyCreatePage = (req, res, next) => {
     let newSurvey = Survey({
         SurveyName: req.body.SurveyName,
-        OwnerID: req.user._id,
-
-        
-
+        OwnerID: req.user._id
     });
 
     Survey.create(newSurvey, (err, Survey) => {
@@ -129,6 +126,7 @@ module.exports.ProcessSurveyEditPage = (req, res, next) => {
         _id: id,
         SurveyName: req.body.SurveyName,
         OwnerID: req.user._id,
+        ExpireDate: req.user.ExpireDate, ////////
 
         "QuestionObject1.Question": req.body.QuestionObject1Question,
         // Each one of those requests is one of the choices in the array, Not sure how to pass in a array from the EJs File
