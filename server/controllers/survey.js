@@ -9,7 +9,6 @@ let express = require("express");
 let router = express.Router();
 let passport = require("passport");
 
-
 // connect the survey model
 let surveyModel = require("../models/survey");
 let Survey = surveyModel.Model; // alias
@@ -17,47 +16,59 @@ let Survey = surveyModel.Model; // alias
 //Render survey-list View
 
 module.exports.DisplaySurveyListPage = (req, res, next) => {
-  // Add Date compairer
-  Survey.find({OwnerID: req.user._id}, (err, surveys) => {
-    if (err) {
-      return console.error(err);
-    }
-    else {
-      var results = [];
-      for(var survey of surveys){
-        var temp={
-          SurveyName:survey.SurveyName,
-          updatedAt:dateFormat(survey.updatedAt),
-          createdAt:dateFormat(survey.createdAt),
-          _id:survey._id
+    
+    let currentDate = Date.now(); // Used for checking expirery
+   
+    Survey.find({ OwnerID: req.user._id }, (err, surveys) => {
+        if (err) 
+        {
+            return console.error(err);
         }
-        results.push(temp);
-      }
-      res.render('content/survey-list',
-      { 
-        title: 'Survey',
-        surveys: results,
-        displayName: req.user ? req.user.displayName : '',
-      });
-    }
-  });
+        else 
+        {
+            var results = [];
+            for (var survey of surveys) 
+            {
+                var temp =
+                {
+                    SurveyName: survey.SurveyName,
+                    ExpireDate: survey.ExpireDate,
+                    IsActive: survey.IsActive,
+                    updatedAt: dateFormat(survey.updatedAt),
+                    createdAt: dateFormat(survey.createdAt),
+                    _id: survey._id
+                }
+                // Check if the the survey has expired or is not active before pushing to the displaylist
+                if (temp.ExpireDate < currentDate && IsActive)
+                {
+                    results.push(temp);
+                }
+            }
+            res.render('content/survey-list',
+                {
+                    title: 'Survey',
+                    surveys: results,
+                    displayName: req.user ? req.user.displayName : '',
+                });
+        }
+    });
 }
 
-function dateFormat(msg){
-  var date = new Date(msg)
-  var year = date.getFullYear()
-  var month= (date.getMonth()+1).toString().padStart(2,'0')//padStart()是ES6的新方法，即设置字符串的长度，不足的用第二个参数补充
-  var day = (date.getDate()).toString().padStart(2,'0')
-  var hour =date.getHours()
-  var min = (date.getMinutes()).toString().padStart(2,'0')
-  var second = (date.getSeconds()).toString().padStart(2,'0')
-  return `${year}-${month}-${day}  ${hour}:${min}:${second}`//这个不是单引号，而是tab键上面的键
+function dateFormat(msg) {
+    var date = new Date(msg)
+    var year = date.getFullYear()
+    var month = (date.getMonth() + 1).toString().padStart(2, '0')//padStart()是ES6的新方法，即设置字符串的长度，不足的用第二个参数补充
+    var day = (date.getDate()).toString().padStart(2, '0')
+    var hour = date.getHours()
+    var min = (date.getMinutes()).toString().padStart(2, '0')
+    var second = (date.getSeconds()).toString().padStart(2, '0')
+    return `${year}-${month}-${day}  ${hour}:${min}:${second}`//这个不是单引号，而是tab键上面的键
 }
 
 
 module.exports.DisplaySurveyQuestionPage = (req, res, next) => {
     let id = req.params.id;
-    
+
     Survey.findById(id, (err, survey) => {
         if (err) {
             console.log(err);
@@ -80,14 +91,14 @@ module.exports.ProcessSurveyQuestionPage = (req, res, next) => {
 module.exports.DisplaySurveyCreatePage = (req, res, next) => {
     res.render("content/survey-create", {
         title: "Create a Survey",
-        displayName: req.user ? req.user.displayName : "",
-        SurveyQuestions: [ [""] ]
+        displayName: req.user ? req.user.displayName : ""
     });
 };
 module.exports.ProcessSurveyCreatePage = (req, res, next) => {
     let newSurvey = Survey({
         SurveyName: req.body.SurveyName,
         OwnerID: req.user._id
+        
     });
 
     Survey.create(newSurvey, (err, Survey) => {
@@ -185,12 +196,11 @@ module.exports.DisplaySurveyDeletePage = (req, res, next) => {
     });
 };
 
-function AddQuestion()
-{
+function AddQuestion() {
     console.log("Adding question");
     let question = document.getElementById("Question");
 
     let newQuestion = question.cloneNode(true);
-    
-    document.getElementById("questions").appendChild(newQuestion);    
+
+    document.getElementById("questions").appendChild(newQuestion);
 }

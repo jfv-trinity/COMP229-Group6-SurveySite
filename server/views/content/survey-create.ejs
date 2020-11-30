@@ -25,17 +25,27 @@
                     placeholder="Enter the title for your servey"
                     name="SurveyName" 
                     required>
-                </div>         
+                </div>     
                 
-                <!-- THIS NEEDS TO BE CHANGED -->
-                <div class="form-group">
-                    <label for="SurveyNameTextField"> DATE </label>
-                    <input type="text" class="form-control"
-                    id="expireDate"
-                    placeholder="YYYY-MM-DD"
-                    name="expireDate" 
-                    required>
-                </div>         
+                <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input"
+                      id="SurveyActiveTextBox"
+                      name="IsActive"
+                      value="">
+                      Activate Survey
+                    </label>
+                  </div>                
+
+                <div class="form-group row">
+                    <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                    <div class="col-10">
+                      <input type="date" class="form-control"
+                       value="0000-00-00" 
+                       id="ExpireDate"
+                       name="ExpireDate">
+                    </div>
+                </div>       
                 
                 <!-- 100% there I will fuck up a name, Id or label here because they are all so similar, the difference being the numbers QuestionObject#Choice#-->
                 <!--Question 1-->
