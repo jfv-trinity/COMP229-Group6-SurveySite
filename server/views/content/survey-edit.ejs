@@ -30,10 +30,7 @@
 
                 <div class="form-check">
                     <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input"
-                      id="SurveyActiveTextBox"
-                      name="IsActive"
-                      checked="<%= survey.IsActive %>">
+                        <input type="checkbox" class="form-check-input" id="SurveyActiveTextBox" name="IsActive" value="true">
                       Activate Survey
                     </label>
                   </div>                
@@ -42,9 +39,9 @@
                     <label for="example-date-input" class="col-2 col-form-label">Date</label>
                     <div class="col-10">
                       <input type="date" class="form-control"
-                       value="<%= survey.ExpireDate %>"
-                       id="ExpireDate"
-                       name="ExpireDate">
+                      id="ExpireDate"
+                      value= "<%= survey.QuestionObject1.Choices[0] %>"
+                      name="ExpireDate">
                     </div>
                 </div>       
                 
@@ -56,7 +53,7 @@
                     <label for="QuestionObject1QuestionTextField">Question 1:</label>
                     <input type="text" class="form-control"
                     id="QuestionObject1QuestionTextField"
-                    value="<%= survey.QuestionObject1.Question1 %>"
+                    value= "<%= survey.QuestionObject1.Question %>"
                     name="QuestionObject1Question" 
                     required>
                 </div>
@@ -67,7 +64,7 @@
                     <label for="QuestionObject1Choice1TextField">Choice 1:</label>
                     <input type="text" class="form-control"
                     id="QuestionObject1Choice1TextFieldTextField"
-                    value="<%= survey.QuestionObject1Choice1 %>"
+                    value= "<%= survey.QuestionObject1.Choices[0] %>"
                     name="QuestionObject1Choice1" 
                     required>
                 </div>
@@ -77,7 +74,7 @@
                     <label for="QuestionObject1Choice2TextField">Choice 2:</label>
                     <input type="text" class="form-control"
                     id="QuestionObject1Choice2TextFieldTextField"
-                    value="<%= survey.QuestionObject1Choice2 %>"
+                    value= "<%= survey.QuestionObject1.Choices[1] %>"
                     name="QuestionObject1Choice2" 
                     required>
                 </div>
@@ -87,7 +84,7 @@
                     <label for="QuestionObject1Choice3TextField">Choice 3</label>
                     <input type="text" class="form-control"
                     id="QuestionObject1Choice3TextFieldTextField"
-                    value="<%= survey.QuestionObject1Choice3 %>"
+                    value= "<%= survey.QuestionObject1.Choices[2] %>"
                     name="QuestionObject1Choice3" 
                     required>
                 </div>
@@ -97,7 +94,7 @@
                     <label for="QuestionObject1Choice4TextField">Choice 4</label>
                     <input type="text" class="form-control"
                     id="QuestionObject1Choice4TextFieldTextField"
-                    value="<%= survey.QuestionObject1Choice4 %>"
+                    value= "<%= survey.QuestionObject1.Choices[3] %>"
                     name="QuestionObject1Choice4" 
                     required>
                 </div>

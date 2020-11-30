@@ -31,7 +31,9 @@ module.exports.DisplayHomePage = (req, res, next) => {
                     _id: survey._id,
                 };
                 // Check if the the survey has expired or is not active before pushing to the displaylist
-                if (temp.ExpireDate < currentDate && IsActive) {
+                if (temp.ExpireDate < currentDate && IsActive) 
+                {
+                    console.log(temp.SurveyName +  " Survey Can be shown")
                     results.push(temp);
                 }
             }

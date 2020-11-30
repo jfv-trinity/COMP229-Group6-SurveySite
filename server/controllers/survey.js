@@ -83,11 +83,24 @@ module.exports.DisplaySurveyCreatePage = (req, res, next) => {
 };
 
 module.exports.ProcessSurveyCreatePage = (req, res, next) => {
-  let newSurvey = Survey({
+    
+    console.log("The value of of the check box is " + req.IsActive);
+    
+    let CheckBoxPressed;
+    if (req.IsActive == undefined) 
+    {
+        CheckBoxPressed = false;
+    }
+    else  
+    {
+        CheckBoxPressed = true;
+    }
+
+    let newSurvey = Survey({
     SurveyName: req.body.SurveyName,
     OwnerID: req.user._id,
 
-    IsActive: req.body.IsActive.checked,
+    IsActive: CheckBoxPressed,
     ExpireDate: req.body.ExpireDate,
 
     "QuestionObject1.Question": req.body.QuestionObject1Question,
@@ -149,12 +162,24 @@ module.exports.DisplaySurveyEditPage = (req, res, next) => {
 module.exports.ProcessSurveyEditPage = (req, res, next) => {
   let id = req.params.id;
 
+    console.log("The value of of the check box is " + req.IsActive);
+    
+    let CheckBoxPressed;
+    if (req.IsActive == undefined) 
+    {
+        CheckBoxPressed = false;
+    }
+    else  
+    {
+        CheckBoxPressed = true;
+    }
+
   let updatedSurvey = Survey({
     _id: id,
     SurveyName: req.body.SurveyName,
     OwnerID: req.user._id,
 
-    IsActive: req.body.IsActive.checked,
+    IsActive: req.body.IsActive,   
     ExpireDate: req.body.ExpireDate,
 
     "QuestionObject1.Question": req.body.QuestionObject1Question,
@@ -207,12 +232,3 @@ module.exports.DisplaySurveyDeletePage = (req, res, next) => {
     }
   });
 };
-
-function AddQuestion() {
-  console.log("Adding question");
-  let question = document.getElementById("Question");
-
-  let newQuestion = question.cloneNode(true);
-
-  document.getElementById("questions").appendChild(newQuestion);
-}
