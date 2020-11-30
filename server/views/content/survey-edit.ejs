@@ -27,8 +27,26 @@
                     value= "<%= survey.SurveyName %>"
                     required>
                 </div>
+
+                <div class="form-group">
+                    <label for="sel1">Survey</label>
+                    <select class="form-control" id="IsActive" name="IsActive">
+                        <option value="false">Inactive </option>
+                        <option value="true">Active </option>                      
+                    </select>
+                  </div>                  
+
+                <div class="form-group row">
+                    <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                    <div class="col-10">
+                      <input type="date" class="form-control"
+                      id="ExpireDate"
+                      value= "<%= survey.QuestionObject1.Choices[0] %>"
+                      name="ExpireDate">
+                    </div>
+                </div>       
                 
-                <!-- 100% there I will fuck up a name, Id or label here because they are all so similar, the difference being the numbers QuestionObject#Choice#-->
+              <!-- 100% there I will fuck up a name, Id or label here because they are all so similar, the difference being the numbers QuestionObject#Choice#-->
                 <!--Question 1-->
                 
                 <!--Question Being Asked-->
@@ -36,9 +54,8 @@
                     <label for="QuestionObject1QuestionTextField">Question 1:</label>
                     <input type="text" class="form-control"
                     id="QuestionObject1QuestionTextField"
-                    placeholder="Enter Question 1"
-                    name="QuestionObject1Question" 
                     value= "<%= survey.QuestionObject1.Question %>"
+                    name="QuestionObject1Question" 
                     required>
                 </div>
                 
@@ -48,9 +65,8 @@
                     <label for="QuestionObject1Choice1TextField">Choice 1:</label>
                     <input type="text" class="form-control"
                     id="QuestionObject1Choice1TextFieldTextField"
-                    placeholder="Choice 1 for Question 1"
-                    name="QuestionObject1Choice1" 
                     value= "<%= survey.QuestionObject1.Choices[0] %>"
+                    name="QuestionObject1Choice1" 
                     required>
                 </div>
 
@@ -59,9 +75,8 @@
                     <label for="QuestionObject1Choice2TextField">Choice 2:</label>
                     <input type="text" class="form-control"
                     id="QuestionObject1Choice2TextFieldTextField"
-                    placeholder="Choice 2 for Question 1"
-                    name="QuestionObject1Choice2" 
                     value= "<%= survey.QuestionObject1.Choices[1] %>"
+                    name="QuestionObject1Choice2" 
                     required>
                 </div>
 
@@ -70,9 +85,8 @@
                     <label for="QuestionObject1Choice3TextField">Choice 3</label>
                     <input type="text" class="form-control"
                     id="QuestionObject1Choice3TextFieldTextField"
-                    placeholder="Choice 3 for Question 1"
-                    name="QuestionObject1Choice3" 
                     value= "<%= survey.QuestionObject1.Choices[2] %>"
+                    name="QuestionObject1Choice3" 
                     required>
                 </div>
                 
@@ -81,13 +95,12 @@
                     <label for="QuestionObject1Choice4TextField">Choice 4</label>
                     <input type="text" class="form-control"
                     id="QuestionObject1Choice4TextFieldTextField"
-                    placeholder="Choice 4 for Question 1"
-                    name="QuestionObject1Choice4" 
                     value= "<%= survey.QuestionObject1.Choices[3] %>"
+                    name="QuestionObject1Choice4" 
                     required>
                 </div>
 
-                <!-- 100% there I will fuck up a name, Id or label here because they are all so similar, the difference being the numbers QuestionObject#Choice#-->
+               <!-- 100% there I will fuck up a name, Id or label here because they are all so similar, the difference being the numbers QuestionObject#Choice#-->
                 <!--Question 2-->
                 <div class="form-group">
                     <label for="QuestionObject2QuestionTextField">Question 2</label>
@@ -199,7 +212,7 @@
                     name="QuestionObject3Choice4" 
                     value= "<%= survey.QuestionObject1.Choices[3] %>"
                     required>
-                </div>                
+                </div>         
 
                 <button class="btn btn-primary" type="submit">
                     <i class="fas fa-edit"></i> Submit Edit</button>

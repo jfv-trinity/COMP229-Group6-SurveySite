@@ -18,7 +18,8 @@
               <tr>
                 <th>Title</th>
                 <th>Last Edit</th>
-                <th>Create Time</th>
+                <th>Creation Date</th>
+                <th>Active</th>
                 <th>Edit</th>
                 
                 <th>Delete</th>
@@ -39,8 +40,9 @@
                 <td><%= surveys[count].SurveyName %></td>
                 <td class="updatedTime"><%= surveys[count].updatedAt %> </td>
                 <td class="createdTime"><%= surveys[count].createdAt %> </td>
+                <td><%= surveys[count].SurveyIsActive%></td>
                 <td class="text-center">
-                  <a href="/survey-edit/<%= surveys[count]._id%>" class="btn btn-primary btn-sm">
+                  <a href="/survey-edit/<%= surveys[0]._id%>" class="btn btn-primary btn-sm">
                   <i class="fas fa-pencil-alt"></i> Edit</a>
               </td>
               <td class="text-center">

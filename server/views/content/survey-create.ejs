@@ -17,7 +17,7 @@
         <div class="offset-md-3 col-md-6">
             <h1><%= title %></h1>
 
-            <form class="form" method="POST">
+            <form class="form" method="POST" id="surveyForm">
                 <div class="form-group">
                     <label for="SurveyNameTextField">Survey Name: </label>
                     <input type="text" class="form-control"
@@ -25,7 +25,25 @@
                     placeholder="Enter the title for your servey"
                     name="SurveyName" 
                     required>
-                </div>
+                </div>     
+                
+                <div class="form-group">
+                    <label for="sel1">Survey</label>
+                    <select class="form-control" id="IsActive" name="IsActive">
+                        <option value="false">Inactive </option>
+                        <option value="true">Active </option>                     
+                    </select>
+                  </div>                
+
+                <div class="form-group row">
+                    <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                    <div class="col-10">
+                      <input type="date" class="form-control"
+                       value="0000-00-00" 
+                       id="ExpireDate"
+                       name="ExpireDate">
+                    </div>
+                </div>       
                 
                 <!-- 100% there I will fuck up a name, Id or label here because they are all so similar, the difference being the numbers QuestionObject#Choice#-->
                 <!--Question 1-->
