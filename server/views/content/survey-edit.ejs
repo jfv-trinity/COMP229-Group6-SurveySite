@@ -33,7 +33,7 @@
                       <input type="checkbox" class="form-check-input"
                       id="SurveyActiveTextBox"
                       name="IsActive"
-                      value="<%= survey.IsActive %>">
+                      checked="<%= survey.IsActive %>">
                       Activate Survey
                     </label>
                   </div>                
@@ -42,7 +42,7 @@
                     <label for="example-date-input" class="col-2 col-form-label">Date</label>
                     <div class="col-10">
                       <input type="date" class="form-control"
-                       value="<%= survey.SurveyName %>"
+                       value="<%= survey.ExpireDate %>"
                        id="ExpireDate"
                        name="ExpireDate">
                     </div>
@@ -102,14 +102,15 @@
                     required>
                 </div>
 
-                <!-- 100% there I will fuck up a name, Id or label here because they are all so similar, the difference being the numbers QuestionObject#Choice#-->
+               <!-- 100% there I will fuck up a name, Id or label here because they are all so similar, the difference being the numbers QuestionObject#Choice#-->
                 <!--Question 2-->
                 <div class="form-group">
                     <label for="QuestionObject2QuestionTextField">Question 2</label>
                     <input type="text" class="form-control"
                     id="QuestionObject2QuestionTextField"
-                    value="<%= survey.QuestionObject2.Question %>"
-                    name="QuestionObject2Question" 
+                    placeholder="Enter Question 2"
+                    name="QuestionObject2Question"
+                    value= "<%= survey.QuestionObject2.Question %>"
                     required>
                 </div>
                 
@@ -119,8 +120,9 @@
                     <label for="QuestionObject2Choice1TextField">Choice 1</label>
                     <input type="text" class="form-control"
                     id="QuestionObject2Choice1TextFieldTextField"
-                    placeholder="Question 2 Choice 1"
+                    placeholder="Choice 1 for Question 2"
                     name="QuestionObject2Choice1" 
+                    value= "<%= survey.QuestionObject2.Choices[0] %>"
                     required>
                 </div>
 
@@ -129,8 +131,9 @@
                     <label for="QuestionObject2Choice2TextField">Choice 2</label>
                     <input type="text" class="form-control"
                     id="QuestionObject2Choice2TextFieldTextField"
-                    placeholder="Question 2 Choice 2"
+                    placeholder="Choice 2 for Question 2"
                     name="QuestionObject2Choice2" 
+                    value= "<%= survey.QuestionObject2.Choices[1] %>"
                     required>
                 </div>
 
@@ -139,8 +142,9 @@
                     <label for="QuestionObject2Choice3TextField">Choice 3</label>
                     <input type="text" class="form-control"
                     id="QuestionObject2Choice3TextFieldTextField"
-                    placeholder="Question 2 Choice 3"
+                    placeholder="Choice 3 for Question 2"
                     name="QuestionObject2Choice3" 
+                    value= "<%= survey.QuestionObject2.Choices[2] %>"
                     required>
                 </div>
                 
@@ -149,8 +153,9 @@
                     <label for="QuestionObject2Choice4TextField">Choice 4</label>
                     <input type="text" class="form-control"
                     id="QuestionObject2Choice4TextFieldTextField"
-                    placeholder="Question 2 Choice 4"
+                    placeholder="Choice 4 for Question 2"
                     name="QuestionObject2Choice4" 
+                    value= "<%= survey.QuestionObject2.Choices[3] %>"
                     required>
                 </div>
 
@@ -161,7 +166,8 @@
                     <input type="text" class="form-control"
                     id="QuestionObject3QuestionTextField"
                     placeholder="Enter Question 3"
-                    name="QuestionObject3Question" 
+                    name="QuestionObject3Question"
+                    value= "<%= survey.QuestionObject3.Question %>"
                     required>
                 </div>
                 
@@ -171,8 +177,9 @@
                     <label for="QuestionObject3Choice1TextField">Choice 1</label>
                     <input type="text" class="form-control"
                     id="QuestionObject3Choice1TextFieldTextField"
-                    placeholder="Enter Question 3 Choice 1"
+                    placeholder="Choice 1 for Question 3"
                     name="QuestionObject3Choice1" 
+                    value= "<%= survey.QuestionObject3.Choices[0] %>"
                     required>
                 </div>
 
@@ -181,8 +188,9 @@
                     <label for="QuestionObject3Choice2TextField">Choice 2</label>
                     <input type="text" class="form-control"
                     id="QuestionObject3Choice2TextFieldTextField"
-                    placeholder="Enter Question 3 Choice 2"
+                    placeholder="Choice 2 for Question 3"
                     name="QuestionObject3Choice2" 
+                    value= "<%= survey.QuestionObject3.Choices[1] %>"
                     required>
                 </div>
 
@@ -191,8 +199,9 @@
                     <label for="QuestionObject3Choice3TextField">Choice 3</label>
                     <input type="text" class="form-control"
                     id="QuestionObject3Choice3TextFieldTextField"
-                    placeholder="Enter Question 3Choice 3"
+                    placeholder="Choice 3 for Question 3"
                     name="QuestionObject3Choice3" 
+                    value= "<%= survey.QuestionObject3.Choices[2] %>"
                     required>
                 </div>
                 
@@ -201,10 +210,11 @@
                     <label for="QuestionObject3Choice4TextField">Choice 4</label>
                     <input type="text" class="form-control"
                     id="QuestionObject3Choice4TextFieldTextField"
-                    placeholder="Enter Question 3 Choice 4"
+                    placeholder="Choice 4 for Question 3"
                     name="QuestionObject3Choice4" 
+                    value= "<%= survey.QuestionObject1.Choices[3] %>"
                     required>
-                </div>
+                </div>         
 
                 <button class="btn btn-primary" type="submit">
                     <i class="fas fa-edit"></i> Submit Edit</button>

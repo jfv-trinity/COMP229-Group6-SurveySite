@@ -87,7 +87,7 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
     SurveyName: req.body.SurveyName,
     OwnerID: req.user._id,
 
-    IsActive: req.body.IsActive,
+    IsActive: req.body.IsActive.checked,
     ExpireDate: req.body.ExpireDate,
 
     "QuestionObject1.Question": req.body.QuestionObject1Question,
@@ -154,7 +154,7 @@ module.exports.ProcessSurveyEditPage = (req, res, next) => {
     SurveyName: req.body.SurveyName,
     OwnerID: req.user._id,
 
-    IsActive: req.body.IsActive,
+    IsActive: req.body.IsActive.checked,
     ExpireDate: req.body.ExpireDate,
 
     "QuestionObject1.Question": req.body.QuestionObject1Question,
