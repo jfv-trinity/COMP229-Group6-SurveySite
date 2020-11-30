@@ -29,6 +29,7 @@ module.exports.DisplaySurveyListPage = (req, res, next) => {
           IsActive: survey.IsActive,
           updatedAt: dateFormat(survey.updatedAt),
           createdAt: dateFormat(survey.createdAt),
+          SurveyIsActive: survey.IsActive,
           _id: survey._id,
         };
 
@@ -46,12 +47,12 @@ module.exports.DisplaySurveyListPage = (req, res, next) => {
 function dateFormat(msg) {
   var date = new Date(msg);
   var year = date.getFullYear();
-  var month = (date.getMonth() + 1).toString().padStart(2, "0"); //padStart()是ES6的新方法，即设置字符串的长度，不足的用第二个参数补充
+  var month = (date.getMonth() + 1).toString().padStart(2, "0"); //padStart()是ES6的新方法，即设置字符串的长度，不足的用第二个参数补充 --> padStart() is a new method of ES6, that is, to set the length of the string, if it is insufficient, use the second parameter to supplement
   var day = date.getDate().toString().padStart(2, "0");
   var hour = date.getHours();
   var min = date.getMinutes().toString().padStart(2, "0");
   var second = date.getSeconds().toString().padStart(2, "0");
-  return `${year}-${month}-${day}  ${hour}:${min}:${second}`; //这个不是单引号，而是tab键上面的键
+  return `${year}-${month}-${day}  ${hour}:${min}:${second}`; //这个不是单引号，而是tab键上面的键 --> This is not a single quote, but the key above the tab key
 }
 
 module.exports.DisplaySurveyQuestionPage = (req, res, next) => {
@@ -83,24 +84,12 @@ module.exports.DisplaySurveyCreatePage = (req, res, next) => {
 };
 
 module.exports.ProcessSurveyCreatePage = (req, res, next) => {
-    
-    console.log("The value of of the check box is " + req.IsActive);
-    
-    let CheckBoxPressed;
-    if (req.IsActive == undefined) 
-    {
-        CheckBoxPressed = false;
-    }
-    else  
-    {
-        CheckBoxPressed = true;
-    }
 
     let newSurvey = Survey({
     SurveyName: req.body.SurveyName,
     OwnerID: req.user._id,
 
-    IsActive: CheckBoxPressed,
+    IsActive: req.body.IsActive,
     ExpireDate: req.body.ExpireDate,
 
     "QuestionObject1.Question": req.body.QuestionObject1Question,
@@ -161,19 +150,7 @@ module.exports.DisplaySurveyEditPage = (req, res, next) => {
 //post
 module.exports.ProcessSurveyEditPage = (req, res, next) => {
   let id = req.params.id;
-
-    console.log("The value of of the check box is " + req.IsActive);
-    
-    let CheckBoxPressed;
-    if (req.IsActive == undefined) 
-    {
-        CheckBoxPressed = false;
-    }
-    else  
-    {
-        CheckBoxPressed = true;
-    }
-
+  
   let updatedSurvey = Survey({
     _id: id,
     SurveyName: req.body.SurveyName,
