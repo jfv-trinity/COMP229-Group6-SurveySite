@@ -17,11 +17,9 @@
             <thead>
               <tr>
                 <th>Title</th>
-                <th>Last Edit</th>
-                <th>Creation Date</th>
-                <th>Active</th>
-                <th>Edit</th>
-                
+                <th>Start Date</th>
+                <th>Expire Date</th>
+                <th>Edit</th>                
                 <th>Delete</th>
                 <!--incase we need more columns-->
                 <!--
@@ -34,13 +32,10 @@
               <tbody>
               <!-- Template Row -->
               <% for (let count = 0; count < surveys.length; count++) { %>
-              <tr>
-                
-                
-                <td><%= surveys[count].SurveyName %></td>
-                <td class="updatedTime"><%= surveys[count].updatedAt %> </td>
-                <td class="createdTime"><%= surveys[count].createdAt %> </td>
-                <td><%= surveys[count].SurveyIsActive%></td>
+              <tr>                
+                <td><%= surveys[count].SurveyName %> </td> 
+                <td><%= surveys[count].StartDate %> </td>                
+                <td><%= surveys[count].ExpireDate %> </td>
                 <td class="text-center">
                   <a href="/survey-edit/<%= surveys[0]._id%>" class="btn btn-primary btn-sm">
                   <i class="fas fa-pencil-alt"></i> Edit</a>
@@ -60,10 +55,6 @@
       </div>
     </div>
   </div>
- 
   
-
-
-
-    <%- include('../partials/bottomnav.ejs') -%>
-    <%- include('../partials/footer.ejs') -%>
+  <%- include('../partials/bottomnav.ejs') -%>
+  <%- include('../partials/footer.ejs') -%>
