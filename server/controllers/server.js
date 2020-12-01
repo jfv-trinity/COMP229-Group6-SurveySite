@@ -22,11 +22,12 @@ module.exports.DisplayHomePage = (req, res, next) => {
         else {
             
 
-            let currentDate = Date.now(); // Used for checking expirery
+            let currentDateInMilisec = Date.now(); // Used for checking expirery
             let results = [];
             for (let survey of surveys) {
                 let temp = {
                     SurveyName: survey.SurveyName,
+                    StartDate: survey.StartDate,
                     ExpireDate: survey.ExpireDate,
                     IsActive: survey.IsActive,
                     _id: survey._id,
@@ -36,7 +37,14 @@ module.exports.DisplayHomePage = (req, res, next) => {
                 //console.log(Date.parse(temp.ExpireDate) + " > " +  currentDate + " = ")
                 //console.log(Date.parse(temp.ExpireDate) > currentDate);
                 
-                if (Date.parse(temp.ExpireDate) > currentDate && temp.IsActive) 
+                let startDateinMilisec = Date.parse(temp.StartDate);
+                let expireDateinMilisec = Date.parse(temp.ExpireDate);
+
+                console.log("Current date In miliseconds: " + currentDateInMilisec);
+                console.log("Start date In miliseconds: " + startDateinMilisec);
+                console.log("Expire date In miliseconds: " + expireDateinMilisec);
+
+                if (expireDateinMilisec > currentDateInMilisec && startDateinMilisec < currentDateInMilisec) 
                 {
                     console.log("'" + temp.SurveyName + "'" + " Survey Can be shown")
                     results.push(temp);

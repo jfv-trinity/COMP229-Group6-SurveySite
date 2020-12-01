@@ -31,7 +31,8 @@ let SurveySchema = Schema({
     }    
 },
 {
-    collection: 'surveys'
+    collection: 'surveys',
+    timestamps: true 
 });
 
 module.exports.Model = Model('Survey', SurveySchema);
