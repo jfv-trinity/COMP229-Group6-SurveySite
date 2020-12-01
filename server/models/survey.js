@@ -12,25 +12,22 @@ let Model = mongoose.model;
 let SurveySchema = Schema({
     SurveyName: String,
     OwnerID: String, // The ID of the owner (Used for displaying the database owner in the surveyList)
-    IsActive: Boolean,
+    StartDate: Date,
     ExpireDate: Date,
     QuestionObject1: // An array of question objects    
     { 
         Question : String, // The Question being asked
         Choices: [String], // The Choices of answer
-        TotalAnswers : [Number] // The Number of times a choice has been picked
     },    
     QuestionObject2: // An array of question objects    
     { 
         Question : String, // The Question being asked
         Choices: [String], // The Choices of answer
-        TotalAnswers : [Number] // The Number of times a choice has been picked
     },
     QuestionObject3: // An array of question objects    
     { 
         Question : String, // The Question being asked
         Choices: [String], // The Choices of answer
-        TotalAnswers : [Number] // The Number of times a choice has been picked
     }    
 },
 {
