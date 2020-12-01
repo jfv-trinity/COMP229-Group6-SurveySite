@@ -13,6 +13,11 @@ let passport = require("passport");
 let surveyModel = require("../models/survey");
 let Survey = surveyModel.Model; // alias
 
+//connect the survey entry model
+let surveyEntryModel = require("../models/surveyEntry");
+let SurveyEntry = surveyEntryModel.Model; // alias
+
+
 //Render survey-list View
 
 module.exports.DisplaySurveyListPage = (req, res, next) => {
@@ -67,7 +72,73 @@ module.exports.DisplaySurveyQuestionPage = (req, res, next) => {
 };
 
 module.exports.ProcessSurveyQuestionPage = (req, res, next) => {
-    res.redirect("/");
+  
+  let id = req.params.id;
+
+  SurveyEntry.findOne({SurveyID: id }, (err, surveyEntry) => {
+    if (err) {
+        console.log(err);
+        res.end(err);
+    } else {
+      let QR = surveyEntry.QuestionResponse;
+
+      //get radio value and increase the corresponding integer in the integer
+      //Q1
+      if (req.body.Q1 == 'a'){
+        QR[0]++;
+      }
+      else if (req.body.Q1 == 'b'){
+        QR[1]++;
+      }
+      else if (req.body.Q1 == 'c'){
+        QR[2]++;
+      }
+      else if (req.body.Q1 == 'd'){
+        QR[3]++;
+      }
+      //Q2
+      if (req.body.Q2 == 'a'){
+        QR[4]++;
+      }
+      else if (req.body.Q2 == 'b'){
+        QR[5]++;
+      }
+      else if (req.body.Q2 == 'c'){
+        QR[6]++;
+      }
+      else if (req.body.Q2 == 'd'){
+        QR[7]++;
+      }
+      //Q3
+      if (req.body.Q3 == 'a'){
+        QR[8]++;
+      }
+      else if (req.body.Q3 == 'b'){
+        QR[9]++;
+      }
+      else if (req.body.Q3 == 'c'){
+        QR[10]++;
+      }
+      else if (req.body.Q3 == 'd'){
+        QR[11]++;
+      }
+
+      let updatedSurveyEntry = SurveyEntry({
+        _id: surveyEntry._id,
+        SurveyID: id,
+        QuestionResponse: QR
+      });
+
+      SurveyEntry.updateOne({ SurveyID: id }, updatedSurveyEntry, (err) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        } else {
+            res.redirect("/");
+        }
+      });
+    }
+  });
 };
 
 module.exports.DisplaySurveyCreatePage = (req, res, next) => {
@@ -118,7 +189,19 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
             console.log(err);
             res.end(err);
         } else {
-            return res.redirect("/survey-list");
+          let newSurveyEntry = SurveyEntry({
+            SurveyID: Survey._id, //check if the survey id is entered in here
+            QuestionResponse: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          });
+      
+          SurveyEntry.create(newSurveyEntry, (err, SurveyEntery) => {
+            if (err) {
+                console.log(err);
+                res.end(err);
+            } else {
+                return res.redirect("/survey-list");
+            }
+        });
         }
     });
 };
@@ -198,7 +281,14 @@ module.exports.DisplaySurveyDeletePage = (req, res, next) => {
             console.log(err);
             res.end(err);
         } else {
+            SurveyEntry.remove({ SurveyID: id }, (err) => {
+            if (err) {
+                console.log(err);
+                res.end(err);
+            } else {
             res.redirect("/survey-list");
+            }
+          });
         }
     });
 };
