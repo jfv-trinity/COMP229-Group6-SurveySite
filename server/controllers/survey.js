@@ -75,73 +75,68 @@ module.exports.ProcessSurveyQuestionPage = (req, res, next) => {
   
   let id = req.params.id;
 
-  let Entry;
-
-  SurveyEntry.find({SurveyID: id }, (err, surveyEntry) => {
+  SurveyEntry.findOne({SurveyID: id }, (err, surveyEntry) => {
     if (err) {
         console.log(err);
         res.end(err);
     } else {
-      Entry = surveyEntry;
-    }
-  });
+      let QR = surveyEntry.QuestionResponse;
 
-  //get radio value and increase the corresponding integer in the integer
-  //Q1
-  if (req.body.Q1 == 'a'){
-    Entry.QuestionResponse[0]++;
-  }
-  else if (req.body.Q1 == 'b'){
-    Entry.QuestionResponse[1]++;
-  }
-  else if (req.body.Q1 == 'c'){
-    Entry.QuestionResponse[2]++;
-  }
-  else if (req.body.Q1 == 'd'){
-    Entry.QuestionResponse[3]++;
-  }
-  //Q2
-  if (req.body.Q2 == 'a'){
-    Entry.QuestionResponse[4]++;
-  }
-  else if (req.body.Q2 == 'b'){
-    Entry.QuestionResponse[5]++;
-  }
-  else if (req.body.Q2 == 'c'){
-    Entry.QuestionResponse[6]++;
-  }
-  else if (req.body.Q2 == 'd'){
-    Entry.QuestionResponse[7]++;
-  }
-  //Q3
-  if (req.body.Q3 == 'a'){
-    Entry.QuestionResponse[8]++;
-  }
-  else if (req.body.Q3 == 'b'){
-    Entry.QuestionResponse[9]++;
-  }
-  else if (req.body.Q3 == 'c'){
-    Entry.QuestionResponse[10]++;
-  }
-  else if (req.body.Q3 == 'd'){
-    Entry.QuestionResponse[11]++;
-  }
+      //get radio value and increase the corresponding integer in the integer
+      //Q1
+      if (req.body.Q1 == 'a'){
+        QR[0]++;
+      }
+      else if (req.body.Q1 == 'b'){
+        QR[1]++;
+      }
+      else if (req.body.Q1 == 'c'){
+        QR[2]++;
+      }
+      else if (req.body.Q1 == 'd'){
+        QR[3]++;
+      }
+      //Q2
+      if (req.body.Q2 == 'a'){
+        QR[4]++;
+      }
+      else if (req.body.Q2 == 'b'){
+        QR[5]++;
+      }
+      else if (req.body.Q2 == 'c'){
+        QR[6]++;
+      }
+      else if (req.body.Q2 == 'd'){
+        QR[7]++;
+      }
+      //Q3
+      if (req.body.Q3 == 'a'){
+        QR[8]++;
+      }
+      else if (req.body.Q3 == 'b'){
+        QR[9]++;
+      }
+      else if (req.body.Q3 == 'c'){
+        QR[10]++;
+      }
+      else if (req.body.Q3 == 'd'){
+        QR[11]++;
+      }
 
-  /*
-  let updatedSurveyEntry = SurveyEntry({
-    SurveyID: id,
-    UserID: survey.OwnerID,
-    QuestionResponse: Entry.QuestionResponse
-  });
-  */
-  
-  //SurveyEntry.updateOne({ SurveyID: id }, updatedSurveyEntry, (err) => {
-  SurveyEntry.updateOne({ SurveyID: id }, Entry, (err) => {
-    if (err) {
-        console.log(err);
-        res.end(err);
-    } else {
-        res.redirect("/");
+      let updatedSurveyEntry = SurveyEntry({
+        _id: surveyEntry._id,
+        SurveyID: id,
+        QuestionResponse: QR
+      });
+
+      SurveyEntry.updateOne({ SurveyID: id }, updatedSurveyEntry, (err) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        } else {
+            res.redirect("/");
+        }
+      });
     }
   });
 };
@@ -196,7 +191,6 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
         } else {
           let newSurveyEntry = SurveyEntry({
             SurveyID: Survey._id, //check if the survey id is entered in here
-            UserID: req.user._id,
             QuestionResponse: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
           });
       
@@ -287,7 +281,14 @@ module.exports.DisplaySurveyDeletePage = (req, res, next) => {
             console.log(err);
             res.end(err);
         } else {
+            SurveyEntry.remove({ SurveyID: id }, (err) => {
+            if (err) {
+                console.log(err);
+                res.end(err);
+            } else {
             res.redirect("/survey-list");
+            }
+          });
         }
     });
 };
