@@ -17,3 +17,5 @@ let SurveyEntry = new Schema({
 {
     collection: "surveyEntry"
 });
+
+module.exports.Model = Model('SurveyEntry', SurveyEntry);
