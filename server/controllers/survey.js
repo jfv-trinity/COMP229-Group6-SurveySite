@@ -48,10 +48,10 @@ module.exports.DisplaySurveyListPage = (req, res, next) => {
 function formateDate(dateToBeFormated) {
     var date = new Date(dateToBeFormated);
     var year = date.getFullYear();
-    var month = (date.getMonth() + 1).toString().padStart(2, "0"); //padStart()是ES6的新方法，即设置字符串的长度，不足的用第二个参数补充 --> padStart() is a new method of ES6, that is, to set the length of the string, if it is insufficient, use the second parameter to supplement
+    var month = (date.getMonth() + 1).toString().padStart(2, "0"); //padStart()is the new method of ES6, which is set the length of the string, the insufficient part will be supplemented with the second parameter
     var day = date.getDate().toString().padStart(2, "0");
     
-    return `${year}-${month}-${day}`; //这个不是单引号，而是tab键上面的键 --> This is not a single quote, but the key above the tab key
+    return `${year}-${month}-${day}`; 
 }
 
 module.exports.DisplaySurveyQuestionPage = (req, res, next) => {
