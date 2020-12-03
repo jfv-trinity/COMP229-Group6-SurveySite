@@ -5,7 +5,7 @@
 <!------------------------------------------------------------------------->
 <!------------------------------------------------------------------------->
 <!------------------------------------------------------------------------->
-<!-----------------------------ADD PAGE----------------------------------->
+<!-----------------------------Create PAGE----------------------------------->
 <!------------------------------------------------------------------------->
 <!------------------------------------------------------------------------->
 <!------------------------------------------------------------------------->
@@ -17,7 +17,7 @@
         <div class="offset-md-3 col-md-6">
             <h1><%= title %></h1>
 
-            <form class="form" method="POST">
+            <form class="form" method="POST" id="surveyForm">
                 <div class="form-group">
                     <label for="SurveyNameTextField">Survey Name: </label>
                     <input type="text" class="form-control"
@@ -25,7 +25,27 @@
                     placeholder="Enter the title for your servey"
                     name="SurveyName" 
                     required>
-                </div>
+                </div>     
+                
+                <div class="form-group row">
+                    <label for="example-date-input" class="col-2 col-form-label">Start Date</label>
+                    <div class="col-10">
+                      <input type="date" class="form-control"
+                      id="StartDate"
+                      value= "0000-00-00"
+                      name="StartDate">
+                    </div>
+                </div>                 
+
+                <div class="form-group row">
+                    <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                    <div class="col-10">
+                      <input type="date" class="form-control"
+                       value="0000-00-00" 
+                       id="ExpireDate"
+                       name="ExpireDate">
+                    </div>
+                </div>       
                 
                 <!-- 100% there I will fuck up a name, Id or label here because they are all so similar, the difference being the numbers QuestionObject#Choice#-->
                 <!--Question 1-->
@@ -184,9 +204,9 @@
                     name="QuestionObject3Choice4" 
                     required>
                 </div>                
-
+                
                 <button class="btn btn-primary" type="submit">
-                    <i class="fas fa-edit"></i> Submit</button>
+                    <i class="fas fa-create"></i> Submit Survey</button>
                     <!------------------------------------------------------------------------->
                     <!------------------------------------------------------------------------->
                     <!------------------------------------------------------------------------->
@@ -199,7 +219,7 @@
                     <!---------\ /------------------------------------------------------------->
                     <!----------V-------------------------------------------------------------->                    
                     <a href="/survey-list" class="btn btn-warning">
-                        <i class="fas fa-undo"></i> Cancel</a>
+                        <i class="fas fa-undo"></i> Cancel Creation</a>
             </form>
         </div>
     </div>
