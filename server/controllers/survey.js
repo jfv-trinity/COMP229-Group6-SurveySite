@@ -66,6 +66,7 @@ module.exports.DisplaySurveyQuestionPage = (req, res, next) => {
                 title: "",
                 displayName: req.user ? req.user.displayName : "",
                 survey: survey,
+                
             });
         }
     });
@@ -74,13 +75,14 @@ module.exports.DisplaySurveyQuestionPage = (req, res, next) => {
 module.exports.ProcessSurveyQuestionPage = (req, res, next) => {
   
   let id = req.params.id;
+  
 
   SurveyEntry.findOne({SurveyID: id }, (err, surveyEntry) => {
     if (err) {
         console.log(err);
         res.end(err);
     } else {
-      let QR = surveyEntry.QuestionResponse;
+      let QR = surveyEntry? surveyEntry.QuestionResponse : [0,0,0,0,0,0,0,0,0,0,0,0];
 
       //get radio value and increase the corresponding integer in the integer
       //Q1
@@ -123,20 +125,41 @@ module.exports.ProcessSurveyQuestionPage = (req, res, next) => {
         QR[11]++;
       }
 
-      let updatedSurveyEntry = SurveyEntry({
-        _id: surveyEntry._id,
-        SurveyID: id,
-        QuestionResponse: QR
-      });
+      if(surveyEntry){
+        let updatedSurveyEntry = SurveyEntry({
+            _id: surveyEntry._id,
+            SurveyID: id,
+            QuestionResponse: QR
+          });
+    
+    
+          SurveyEntry.updateOne({ SurveyID: id }, updatedSurveyEntry, (err) => {
+            if (err) {
+                console.log(err);
+                res.end(err);
+            } else {
+                res.redirect("/");
+            }
+          });
+      }
+      else{
+        let updatedSurveyEntry = new SurveyEntry({
+            
+            SurveyID: id,
+            QuestionResponse: QR
+          });
+          updatedSurveyEntry.save((err,surveyEntry)=>{
+              if(err){
+                console.log(err);
+                res.end(err);
+              }
+              else{
+                  res.redirect('/')
+              }
+          })
+      }
 
-      SurveyEntry.updateOne({ SurveyID: id }, updatedSurveyEntry, (err) => {
-        if (err) {
-            console.log(err);
-            res.end(err);
-        } else {
-            res.redirect("/");
-        }
-      });
+      
     }
   });
 };
@@ -208,12 +231,17 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
 
 module.exports.DisplaySurveyEditPage = (req, res, next) => {
     let id = req.params.id;
+    
+    
 
     Survey.findById(id, (err, survey) => {
         if (err) {
             console.log(err);
             res.end(err);
         } else {
+            if(req.user._id!=survey.OwnerID){
+                return res.redirect("/");
+            }
             res.render("content/survey-edit", {
                 title: "Edit a Survey",
                 displayName: req.user ? req.user.displayName : "",

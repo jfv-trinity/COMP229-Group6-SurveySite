@@ -20,8 +20,6 @@ module.exports.DisplayHomePage = (req, res, next) => {
             return console.error(err);
         } 
         else {
-            
-
             let currentDateInMilisec = Date.now(); // Used for checking expirery
             let results = [];
             for (let survey of surveys) {
