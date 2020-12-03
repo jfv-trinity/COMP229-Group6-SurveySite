@@ -66,6 +66,7 @@ module.exports.DisplaySurveyQuestionPage = (req, res, next) => {
                 title: "",
                 displayName: req.user ? req.user.displayName : "",
                 survey: survey,
+                
             });
         }
     });
@@ -74,13 +75,14 @@ module.exports.DisplaySurveyQuestionPage = (req, res, next) => {
 module.exports.ProcessSurveyQuestionPage = (req, res, next) => {
   
   let id = req.params.id;
+  
 
   SurveyEntry.findOne({SurveyID: id }, (err, surveyEntry) => {
     if (err) {
         console.log(err);
         res.end(err);
     } else {
-      let QR = surveyEntry.QuestionResponse;
+      let QR = surveyEntry? surveyEntry.QuestionResponse : [0,0,0,0,0,0,0,0,0,0,0,0];
 
       //get radio value and increase the corresponding integer in the integer
       //Q1
@@ -123,37 +125,44 @@ module.exports.ProcessSurveyQuestionPage = (req, res, next) => {
         QR[11]++;
       }
 
-      let updatedSurveyEntry = SurveyEntry({
-        _id: surveyEntry._id,
-        SurveyID: id,
-        QuestionResponse: QR
-      });
+      if(surveyEntry){
+        let updatedSurveyEntry = SurveyEntry({
+            _id: surveyEntry._id,
+            SurveyID: id,
+            QuestionResponse: QR
+          });
+    
+    
+          SurveyEntry.updateOne({ SurveyID: id }, updatedSurveyEntry, (err) => {
+            if (err) {
+                console.log(err);
+                res.end(err);
+            } else {
+                res.redirect("/");
+            }
+          });
+      }
+      else{
+        let updatedSurveyEntry = new SurveyEntry({
+            
+            SurveyID: id,
+            QuestionResponse: QR
+          });
+          updatedSurveyEntry.save((err,surveyEntry)=>{
+              if(err){
+                console.log(err);
+                res.end(err);
+              }
+              else{
+                  res.redirect('/')
+              }
+          })
+      }
 
-      SurveyEntry.updateOne({ SurveyID: id }, updatedSurveyEntry, (err) => {
-        if (err) {
-            console.log(err);
-            res.end(err);
-        } else {
-            res.redirect("/");
-        }
-      });
+      
     }
   });
-<<<<<<< HEAD
-}
-
-function dateFormat(msg){
-  var date = new Date(msg)
-  var year = date.getFullYear()
-  var month= (date.getMonth()+1).toString().padStart(2,'0')//padStart()is the new method of ES6, which is set the length of the string, the insufficient part will be supplemented with the second parameter
-  var day = (date.getDate()).toString().padStart(2,'0')
-  var hour =date.getHours()
-  var min = (date.getMinutes()).toString().padStart(2,'0')
-  var second = (date.getSeconds()).toString().padStart(2,'0')
-  return `${year}-${month}-${day}  ${hour}:${min}:${second}` 
-=======
 };
->>>>>>> Xuhui
 
 module.exports.DisplaySurveyCreatePage = (req, res, next) => {
     res.render("content/survey-create", {
@@ -222,12 +231,17 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
 
 module.exports.DisplaySurveyEditPage = (req, res, next) => {
     let id = req.params.id;
+    
+    
 
     Survey.findById(id, (err, survey) => {
         if (err) {
             console.log(err);
             res.end(err);
         } else {
+            if(req.user._id!=survey.OwnerID){
+                return res.redirect("/");
+            }
             res.render("content/survey-edit", {
                 title: "Edit a Survey",
                 displayName: req.user ? req.user.displayName : "",
