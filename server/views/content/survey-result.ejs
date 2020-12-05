@@ -1,0 +1,52 @@
+<%- include('../partials/header.ejs') -%>
+
+
+<!-- MAIN CONTENT -->
+
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1><%= title %></h1><br>
+            <h3 display-4>Survey Name:  </h5>
+            <h5 display-4>Question:  </h5>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th>Choice</th>
+                      <th>Count</th>
+                      
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Template Row -->
+                    <tr>                
+                      <td>Choice 1 </td> 
+                      <td>0</td>                
+                    </tr>
+                    <tr>                
+                        <td>Choice 2 </td> 
+                        <td>0</td>                
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+               <div class="col-md-offset-1 col-md-10 text-center">
+                <ul class="pagination pagination-lg pager" id="myPager"></ul>
+            
+            
+            
+            
+            
+            
+            
+            <h5 display-4>Survey Testers:  </h5>
+            </div><br>
+
+           
+    </div>
+</div>
+            
+        
+  <%- include('../partials/bottomnav.ejs') -%>
+  <%- include('../partials/footer.ejs') -%>

@@ -320,3 +320,11 @@ module.exports.DisplaySurveyDeletePage = (req, res, next) => {
         }
     });
 };
+
+//edit survey result page to add functionality
+module.exports.DisplaySurveyResultPage = (req, res, next) => {
+    res.render("content/survey-result", {
+        title: "Survey Results",
+        displayName: req.user ? req.user.displayName : "",
+    });
+};
