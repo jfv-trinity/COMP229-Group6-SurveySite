@@ -10,50 +10,46 @@
     <link rel='stylesheet' href='/Content/app.css' />
   </head>
   <body>
-    
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/">
-        <img src="/Assets/images/logo.png" alt="Logo" width="40" height="40">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
 
-          <% if(typeof displayName == 'string' && displayName) { %>
-          <li class="nav-item active">
+  <nav>
+    <ul class="menuItems">
+        <li class="nav-item active">
+            <a  href="/">
+              <img src="/Assets/images/logo.png" alt="Logo" width="40" height="40">
+            </a>
+        </li>
+      <% if(typeof displayName == 'string' && displayName) { %>
+        <li class="nav-item active">
+          <a data-item='Home' href="/home">Home </a>
+        </li>
+        <% } else { %>
+          <!-- <li class="nav-item active">
             <a class="nav-link" href="/home"><i class="fas fa-home fa-lg"></i> Home </a>
+          </li> -->
+        <% } %>
+
+
+        <% if(typeof displayName == 'string' && displayName) { %>
+        <li class="nav-item active">
+          <a data-item='Survey List' href="/survey-list"> Survey List </a>
+        </li>
+        <% } else { %>
+          <!---<li class="nav-item active">
+            <a class="nav-link" href="/login"><i class="far fa-address-book fa-lg"></i></i> Survey List </a>--->
+        <% } %>
+        <% if(typeof displayName == 'string' && displayName) { %>
+          <li data-item='Welcome' style="font-size: 1.5rem;"> Welcome, <%= displayName %></li>
+          <li class="nav-item">
+            <a data-item='Logout' href="/logout"> Logout </a>
           </li>
-          <% } else { %>
-            <!-- <li class="nav-item active">
-              <a class="nav-link" href="/home"><i class="fas fa-home fa-lg"></i> Home </a>
-            </li> -->
-          <% } %>
-
-
-          <% if(typeof displayName == 'string' && displayName) { %>
-          <li class="nav-item active">
-            <a class="nav-link" href="/survey-list"><i class="far fa-address-book fa-lg"></i></i> Survey List </a>
+        <% } else { %>
+          <li class="nav-item">
+            <a data-item='Login' href="/login"> Login </a>
           </li>
-          <% } else { %>
-            <!---<li class="nav-item active">
-              <a class="nav-link" href="/login"><i class="far fa-address-book fa-lg"></i></i> Survey List </a>--->
-          <% } %>
+        <% } %>
+    </ul>
+  </nav>
 
-          <% if(typeof displayName == 'string' && displayName) { %>
-            <li class="navbar-text"><i class="fas fa-lg fa-user"></i> Welcome, <%= displayName %></li>
-            <li class="nav-item">
-              <a class="nav-link" href="/logout"><i class="fas fa-lg fa-sign-out-alt"></i> Logout </a>
-            </li>
-          <% } else { %>
-            <li class="nav-item">
-              <a class="nav-link" href="/login"><i class="fas fa-lg fa-sign-in-alt"></i> Login </a>
-            </li>
-          <% } %>
+</section>
 
-        </ul>
-       
-      </div>
-    </nav>
+

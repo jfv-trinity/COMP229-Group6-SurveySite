@@ -5,10 +5,261 @@ StudentID: 301118010
 Date: 10/22/2020
 */
 
-body 
-{
- margin-bottom: 60px;
- background-image: url('images/maintenance.jpg');
+a{
+    color: #8254ff;
 }
+.btn-primary:hover
+{
+    background-color: #8254ff;
+  }
 
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    align-items: center;
+    position: relative;
+    min-height: 100vh;
+    font-family: Hack, monospace;
+  }
+  
+  div {
+    color: #727272;
+    text-align: center;
+  }
+  
+  p {
+    margin: 16px;
+    font-size: 96px;
+    color: #ccc;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: all 1s ease-in-out;
+    position: relative;
+  }
+  p::before {
+    content: attr(data-item);
+    transition: all 1s ease-in-out;
+    color: #8254ff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 0;
+    overflow: hidden;
+  }
+  p:hover::before {
+    width: 100%;
+  }
+  
+  nav {
+    /*margin: 25px;*/
+    background: #f9f9f9;
+    /*padding: 16px;*/
+  }
+  nav .menuItems {
+    list-style: none;
+    display: flex;
+  }
+  nav .menuItems li {
+    margin: 50px;
+  }
+  nav .menuItems li a {
+    text-decoration: none;
+    color: #8f8f8f;
+    font-size: 24px;
+    font-weight: 400;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    text-transform: uppercase;
+  }
+  nav .menuItems li a::before {
+    content: attr(data-item);
+    transition: 0.5s;
+    color: #8254ff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 0;
+    overflow: hidden;
+  }
+  nav .menuItems li a:hover::before {
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  footer {
+    background-color: #efefef;
+  flex: 0 0 50px;/*or just height:50px;*/
+  margin-top: auto;
+   position: static; 
+    left: 0 ; right: 0; bottom: 0; 
+    font-size: 12px;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    font-size: 14px;
+   
+    background-color: #f1f1f1;
+    color: #000000; 
+    text-align: center;
+  }
+  footer a {
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid;
+  }
+  footer a:hover {
+    border-bottom: 1px transparent;
+  }
+  
+  /*Button Border*/
+  .draw-border {
+    box-shadow: inset 0 0 0 4px #ccc;
+    color: #ccc;
+    -webkit-transition: color 0.25s 0.0833333333s;
+    transition: color 0.25s 0.0833333333s;
+    position: relative;
+  }
+  .draw-border::before, .draw-border::after {
+    border: 0 solid transparent;
+    box-sizing: border-box;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 0;
+    right: 0;
+    
+  }
+  .draw-border::before {
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+  }
+  .draw-border::after {
+    border-top-width: 4px;
+    border-right-width: 4px;
+  }
+  .draw-border:hover {
+    color: #8254ff;
+  }
+  .draw-border:hover::before, .draw-border:hover::after {
+    border-color: #8254ff;
+    -webkit-transition: border-color 0s, width 0.25s, height 0.25s;
+    transition: border-color 0s, width 0.25s, height 0.25s;
+    width: 100%;
+    height: 100%;
+  }
+  .draw-border:hover::before {
+    -webkit-transition-delay: 0s, 0s, 0.25s;
+            transition-delay: 0s, 0s, 0.25s;
+  }
+  .draw-border:hover::after {
+    -webkit-transition-delay: 0s, 0.25s, 0s;
+            transition-delay: 0s, 0.25s, 0s;
+  }
+  
+  .btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1.5;
+    
+    padding: 1em 2em;
+    letter-spacing: 0.05rem;
+    color: #8254ff; 
+  }
+  .btn:focus {
+    outline: 2px dotted #8254ff;
+  }
+  
 
+  /*Questions*/
+  
+
+.quotes {
+    width: 100%;
+    min-height: 400px;
+    justify-content: space-between;
+    z-index: 2;
+    
+  }
+  
+  .quotes .box {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    min-height: 320px;
+    background: #f2f2f2;
+    overflow: hidden;
+    transition: all 0.5s ease-in;
+    z-index: 2;
+    box-sizing: border-box;
+    margin-bottom: 35px;
+    padding: 30px;
+    box-shadow: -10px 25px 50px rgba(0, 0, 0, 0.3);
+  }
+  
+  .quotes .box::before {
+    position: absolute;
+    top: -20px;
+    left: 5px;
+    width: 100%;
+    height: 100%;
+    font-size: 120px;
+    opacity: 0.2;
+    background: transparent;
+    pointer-events: none;
+  }
+  
+  .quotes .box::after {
+   position: absolute;
+    bottom: -10%;
+    right: 5%;
+    font-size: 120px;
+    opacity: 0.2;
+    background: transparent;
+    filter: invert(1);
+    pointer-events: none;
+  }
+  
+  .quotes .box p {
+    margin: 0;
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .quotes .box h2 {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    bottom: 10%;
+    right: 10%;
+    font-size: 1.5rem;
+  }
+  
+  .quotes .box:hover {
+    color: #f2f2f2;
+    box-shadow: 20px 50px 100px rgba(0, 0, 0, 0.5);
+  }
+  
+  .quotes .box.box1:hover,
+  .quotes .box.box1:hover~.bg {
+    opacity: 1;
+    background: #e2a9e5;
+  background: -moz-linear-gradient(-45deg, #e2a9e5 15%, #2b94e5 100%);
+  background: -webkit-linear-gradient(-45deg, #e2a9e5 15%,#2b94e5 100%);
+  background: linear-gradient(135deg, #e2a9e5 15%,#2b94e5 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2a9e5', endColorstr='#2b94e5',GradientType=1 );
+  }
+  
