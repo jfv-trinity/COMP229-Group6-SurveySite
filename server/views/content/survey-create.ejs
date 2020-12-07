@@ -12,63 +12,33 @@
 <!------------------------------------------------------------------------->
 <!-------------------------------------------------------------------------> 
 <!-- MAIN CONTENT -->
-<head><style>
-        * {
-          box-sizing: border-box;
-        }
-        
-        /* Create three equal columns that floats next to each other */
-        .column {
-          float: left;
-          width: 33.33%;
-          padding: 10px;
-          
-        }
-        
-        /* Clear floats after the columns */
-        .row:after {
-          content: "";
-          display: table;
-          clear: both;
-        }
-        
-        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-        @media screen and (max-width: 600px) {
-          .column {
-            width: 100%;
-          }
-        }
-        </style>
-        </head>
-<body>
-
 <div class="container">
     <div class="row">
-        <div class="offset-md-1 col-md-11">
+        <div class="offset-md-3 col-md-6">
             <h1><%= title %></h1>
 
-            <form class="form" method="POST" id="surveyForm"></form>
+            <form class="form" method="POST" id="surveyForm">
                 <div class="form-group">
-                    <label for="SurveyNameTextField"><h2>Survey Name: </h2></label>
+                    <label for="SurveyNameTextField">Survey Name: </label>
                     <input type="text" class="form-control"
                     id="SurveyNameTextField"
-                    placeholder="Enter the title for your survey"
+                    placeholder="Enter the title for your servey"
                     name="SurveyName" 
                     required>
                 </div>     
                 
                 <div class="form-group row">
-                    <label for="example-date-input" class="col-2 col-form-label"><h5>Start Date</h5></label>
+                    <label for="example-date-input" class="col-2 col-form-label">Start Date</label>
                     <div class="col-10">
                       <input type="date" class="form-control"
                       id="StartDate"
-                      value="0000-00-00" 
+                      value= "0000-00-00"
                       name="StartDate">
                     </div>
                 </div>                 
 
                 <div class="form-group row">
-                    <label for="example-date-input" class="col-2 col-form-label"><h5>End Date</h5></label>
+                    <label for="example-date-input" class="col-2 col-form-label">End Date</label>
                     <div class="col-10">
                       <input type="date" class="form-control"
                        value="0000-00-00" 
@@ -76,176 +46,165 @@
                        name="ExpireDate">
                     </div>
                 </div>       
-           </form>     
-                	
-<div class="row">
-        <div class="column" style="background-color:#aaa;">
-          <!--Question 1-->
+                
+                <!-- 100% there I will fuck up a name, Id or label here because they are all so similar, the difference being the numbers QuestionObject#Choice#-->
+                <!--Question 1-->
                 
                 <!--Question Being Asked-->
                 <div class="form-group">
-                        <label for="QuestionObject1QuestionTextField">Question 1:</label>
-                        <input type="text" class="form-control"
-                        id="QuestionObject1QuestionTextField"
-                        placeholder="Enter Question 1"
-                        name="QuestionObject1Question" 
-                        required>
-                    </div>
-                    
-                    <!--Question 1 Choices-->
-                    <!--Choice 1-->
-                    <div class="form-group">
-                        <label for="QuestionObject1Choice1TextField">Choice 1:</label>
-                        <input type="text" class="form-control"
-                        id="QuestionObject1Choice1TextFieldTextField"
-                        placeholder="Enter Question 1 Choice 1"
-                        name="QuestionObject1Choice1" 
-                        required>
-                    </div>
-    
-                    <!--Choice 2-->
-                    <div class="form-group">
-                        <label for="QuestionObject1Choice2TextField">Choice 2:</label>
-                        <input type="text" class="form-control"
-                        id="QuestionObject1Choice2TextFieldTextField"
-                        placeholder="Enter Question 1 Choice 2"
-                        name="QuestionObject1Choice2" 
-                        required>
-                    </div>
-    
-                    <!--Choice 3-->
-                    <div class="form-group">
-                        <label for="QuestionObject1Choice3TextField">Choice 3</label>
-                        <input type="text" class="form-control"
-                        id="QuestionObject1Choice3TextFieldTextField"
-                        placeholder="Enter Question 1 Choice 3"
-                        name="QuestionObject1Choice3" 
-                        required>
-                    </div>
-                    
-                    <!--Choice 4-->
-                    <div class="form-group">
-                        <label for="QuestionObject1Choice4TextField">Choice 4</label>
-                        <input type="text" class="form-control"
-                        id="QuestionObject1Choice4TextFieldTextField"
-                        placeholder="Enter Question 1 Choice 4"
-                        name="QuestionObject1Choice4" 
-                        required>
-                    </div>
-    
-        </div>
-        <div class="column" style="background-color:#bbb;">
-         <!-- 100% there I will fuck up a name, Id or label here because they are all so similar, the difference being the numbers QuestionObject#Choice#-->
+                    <label for="QuestionObject1QuestionTextField">Question 1:</label>
+                    <input type="text" class="form-control"
+                    id="QuestionObject1QuestionTextField"
+                    placeholder="Enter Question 1"
+                    name="QuestionObject1Question" 
+                    required>
+                </div>
+                
+                <!--Question 1 Choices-->
+                <!--Choice 1-->
+                <div class="form-group">
+                    <label for="QuestionObject1Choice1TextField">Choice 1:</label>
+                    <input type="text" class="form-control"
+                    id="QuestionObject1Choice1TextFieldTextField"
+                    placeholder="Enter Question 1 Choice 1"
+                    name="QuestionObject1Choice1" 
+                    required>
+                </div>
+
+                <!--Choice 2-->
+                <div class="form-group">
+                    <label for="QuestionObject1Choice2TextField">Choice 2:</label>
+                    <input type="text" class="form-control"
+                    id="QuestionObject1Choice2TextFieldTextField"
+                    placeholder="Enter Question 1 Choice 2"
+                    name="QuestionObject1Choice2" 
+                    required>
+                </div>
+
+                <!--Choice 3-->
+                <div class="form-group">
+                    <label for="QuestionObject1Choice3TextField">Choice 3</label>
+                    <input type="text" class="form-control"
+                    id="QuestionObject1Choice3TextFieldTextField"
+                    placeholder="Enter Question 1 Choice 3"
+                    name="QuestionObject1Choice3" 
+                    required>
+                </div>
+                
+                <!--Choice 4-->
+                <div class="form-group">
+                    <label for="QuestionObject1Choice4TextField">Choice 4</label>
+                    <input type="text" class="form-control"
+                    id="QuestionObject1Choice4TextFieldTextField"
+                    placeholder="Enter Question 1 Choice 4"
+                    name="QuestionObject1Choice4" 
+                    required>
+                </div>
+
+                <!-- 100% there I will fuck up a name, Id or label here because they are all so similar, the difference being the numbers QuestionObject#Choice#-->
                 <!--Question 2-->
                 <div class="form-group">
-                        <label for="QuestionObject2QuestionTextField">Question 2</label>
-                        <input type="text" class="form-control"
-                        id="QuestionObject2QuestionTextField"
-                        placeholder="Question 2"
-                        name="QuestionObject2Question" 
-                        required>
-                    </div>
-                    
-                    <!--Question 2 Choices-->
-                    <!--Choice 1-->
-                    <div class="form-group">
-                        <label for="QuestionObject2Choice1TextField">Choice 1</label>
-                        <input type="text" class="form-control"
-                        id="QuestionObject2Choice1TextFieldTextField"
-                        placeholder="Question 2 Choice 1"
-                        name="QuestionObject2Choice1" 
-                        required>
-                    </div>
-    
-                    <!--Choice 2-->
-                    <div class="form-group">
-                        <label for="QuestionObject2Choice2TextField">Choice 2</label>
-                        <input type="text" class="form-control"
-                        id="QuestionObject2Choice2TextFieldTextField"
-                        placeholder="Question 2 Choice 2"
-                        name="QuestionObject2Choice2" 
-                        required>
-                    </div>
-    
-                    <!--Choice 3-->
-                    <div class="form-group">
-                        <label for="QuestionObject2Choice3TextField">Choice 3</label>
-                        <input type="text" class="form-control"
-                        id="QuestionObject2Choice3TextFieldTextField"
-                        placeholder="Question 2 Choice 3"
-                        name="QuestionObject2Choice3" 
-                        required>
-                    </div>
-                    
-                    <!--Choice 4-->
-                    <div class="form-group">
-                        <label for="QuestionObject2Choice4TextField">Choice 4</label>
-                        <input type="text" class="form-control"
-                        id="QuestionObject2Choice4TextFieldTextField"
-                        placeholder="Question 2 Choice 4"
-                        name="QuestionObject2Choice4" 
-                        required>
-                    </div>
-    
-        </div>
-        <div class="column" style="background-color:#ccc;">
-          <!-- 100% there I will fuck up a name, Id or label here because they are all so similar, the difference being the numbers QuestionObject#Choice#-->
+                    <label for="QuestionObject2QuestionTextField">Question 2</label>
+                    <input type="text" class="form-control"
+                    id="QuestionObject2QuestionTextField"
+                    placeholder="Question 2"
+                    name="QuestionObject2Question" 
+                    required>
+                </div>
+                
+                <!--Question 2 Choices-->
+                <!--Choice 1-->
+                <div class="form-group">
+                    <label for="QuestionObject2Choice1TextField">Choice 1</label>
+                    <input type="text" class="form-control"
+                    id="QuestionObject2Choice1TextFieldTextField"
+                    placeholder="Question 2 Choice 1"
+                    name="QuestionObject2Choice1" 
+                    required>
+                </div>
+
+                <!--Choice 2-->
+                <div class="form-group">
+                    <label for="QuestionObject2Choice2TextField">Choice 2</label>
+                    <input type="text" class="form-control"
+                    id="QuestionObject2Choice2TextFieldTextField"
+                    placeholder="Question 2 Choice 2"
+                    name="QuestionObject2Choice2" 
+                    required>
+                </div>
+
+                <!--Choice 3-->
+                <div class="form-group">
+                    <label for="QuestionObject2Choice3TextField">Choice 3</label>
+                    <input type="text" class="form-control"
+                    id="QuestionObject2Choice3TextFieldTextField"
+                    placeholder="Question 2 Choice 3"
+                    name="QuestionObject2Choice3" 
+                    required>
+                </div>
+                
+                <!--Choice 4-->
+                <div class="form-group">
+                    <label for="QuestionObject2Choice4TextField">Choice 4</label>
+                    <input type="text" class="form-control"
+                    id="QuestionObject2Choice4TextFieldTextField"
+                    placeholder="Question 2 Choice 4"
+                    name="QuestionObject2Choice4" 
+                    required>
+                </div>
+
+                <!-- 100% there I will fuck up a name, Id or label here because they are all so similar, the difference being the numbers QuestionObject#Choice#-->
                 <!--Question 3-->
                 <div class="form-group">
-                        <label for="QuestionObject3QuestionTextField">Question 3</label>
-                        <input type="text" class="form-control"
-                        id="QuestionObject3QuestionTextField"
-                        placeholder="Enter Question 3"
-                        name="QuestionObject3Question" 
-                        required>
-                    </div>
-                    
-                    <!--Question 3 Choices-->
-                    <!--Choice 1-->
-                    <div class="form-group">
-                        <label for="QuestionObject3Choice1TextField">Choice 1</label>
-                        <input type="text" class="form-control"
-                        id="QuestionObject3Choice1TextFieldTextField"
-                        placeholder="Enter Question 3 Choice 1"
-                        name="QuestionObject3Choice1" 
-                        required>
-                    </div>
-    
-                    <!--Choice 2-->
-                    <div class="form-group">
-                        <label for="QuestionObject3Choice2TextField">Choice 2</label>
-                        <input type="text" class="form-control"
-                        id="QuestionObject3Choice2TextFieldTextField"
-                        placeholder="Enter Question 3 Choice 2"
-                        name="QuestionObject3Choice2" 
-                        required>
-                    </div>
-    
-                    <!--Choice 3-->
-                    <div class="form-group">
-                        <label for="QuestionObject3Choice3TextField">Choice 3</label>
-                        <input type="text" class="form-control"
-                        id="QuestionObject3Choice3TextFieldTextField"
-                        placeholder="Enter Question 3Choice 3"
-                        name="QuestionObject3Choice3" 
-                        required>
-                    </div>
-                    
-                    <!--Choice 4-->
-                    <div class="form-group">
-                        <label for="QuestionObject3Choice4TextField">Choice 4</label>
-                        <input type="text" class="form-control"
-                        id="QuestionObject3Choice4TextFieldTextField"
-                        placeholder="Enter Question 3 Choice 4"
-                        name="QuestionObject3Choice4" 
-                        required>
-                    </div>                
-                    
-        </div>
-      </div>
+                    <label for="QuestionObject3QuestionTextField">Question 3</label>
+                    <input type="text" class="form-control"
+                    id="QuestionObject3QuestionTextField"
+                    placeholder="Enter Question 3"
+                    name="QuestionObject3Question" 
+                    required>
+                </div>
                 
+                <!--Question 3 Choices-->
+                <!--Choice 1-->
+                <div class="form-group">
+                    <label for="QuestionObject3Choice1TextField">Choice 1</label>
+                    <input type="text" class="form-control"
+                    id="QuestionObject3Choice1TextFieldTextField"
+                    placeholder="Enter Question 3 Choice 1"
+                    name="QuestionObject3Choice1" 
+                    required>
+                </div>
+
+                <!--Choice 2-->
+                <div class="form-group">
+                    <label for="QuestionObject3Choice2TextField">Choice 2</label>
+                    <input type="text" class="form-control"
+                    id="QuestionObject3Choice2TextFieldTextField"
+                    placeholder="Enter Question 3 Choice 2"
+                    name="QuestionObject3Choice2" 
+                    required>
+                </div>
+
+                <!--Choice 3-->
+                <div class="form-group">
+                    <label for="QuestionObject3Choice3TextField">Choice 3</label>
+                    <input type="text" class="form-control"
+                    id="QuestionObject3Choice3TextFieldTextField"
+                    placeholder="Enter Question 3Choice 3"
+                    name="QuestionObject3Choice3" 
+                    required>
+                </div>
                 
-               <br>
+                <!--Choice 4-->
+                <div class="form-group">
+                    <label for="QuestionObject3Choice4TextField">Choice 4</label>
+                    <input type="text" class="form-control"
+                    id="QuestionObject3Choice4TextFieldTextField"
+                    placeholder="Enter Question 3 Choice 4"
+                    name="QuestionObject3Choice4" 
+                    required>
+                </div>                
+                
                 <button class="btn btn-primary" type="submit">
                     <i class="fas fa-create"></i> Submit Survey</button>
                     <!------------------------------------------------------------------------->
@@ -261,13 +220,10 @@
                     <!----------V-------------------------------------------------------------->                    
                     <a href="/survey-list" class="btn btn-warning">
                         <i class="fas fa-undo"></i> Cancel Creation</a>
-                        <br>
-                    <br>
             </form>
         </div>
     </div>
   </div>
-</body>
 
 
 
