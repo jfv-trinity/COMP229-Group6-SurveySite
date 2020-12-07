@@ -11,6 +11,7 @@ let Model = mongoose.model;
 
 let SurveyEntry = new Schema({
     SurveyID: String,
+    UserID: String,
     QuestionResponse: [Number] // an array with each index storeing the integer answer to the Question
 },
 {

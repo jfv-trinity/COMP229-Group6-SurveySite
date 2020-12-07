@@ -19,6 +19,7 @@
                 <th>Title</th>
                 <th>Start Date</th>
                 <th>Expire Date</th>
+                <th>Results</th>
                 <th>Edit</th>                
                 <th>Delete</th>
                 <!--incase we need more columns-->
@@ -37,7 +38,11 @@
                 <td><%= surveys[count].StartDate %> </td>                
                 <td><%= surveys[count].ExpireDate %> </td>
                 <td class="text-center">
-                    <button class="btn draw-border"><a href="/survey-edit/<%= surveys[0]._id%>"  >
+                    <button class="btn draw-border"><a href="/survey-result/<%= surveys[count]._id%>"  >
+                      <i class="fas fa-poll-h"></i> Results</a></button>
+              </td>
+               <td class="text-center">
+                    <button class="btn draw-border"><a href="/survey-edit/<%= surveys[count]._id%>"  >
                       <i class="fas fa-pencil-alt"></i> Edit</a></button>
               </td>
               <td class="text-center">
