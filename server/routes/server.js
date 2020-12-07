@@ -55,6 +55,12 @@ router.get('/survey-question/:id', surveyController.DisplaySurveyQuestionPage);
 /* POST Survey Question page. */
 router.post('/survey-question/:id', surveyController.ProcessSurveyQuestionPage);
 
+/* GET Survey Result page. */
+router.get('/survey-result/:id', surveyController.DisplaySurveyResultPage);
+
+/* POST Survey Question page. */
+router.get('/survey-result/:id', surveyController.ProcessSurveyResultPage);
+
 
 /* GET - Display Login Page */
 router.get('/login', indexController.DisplayLoginPage);
