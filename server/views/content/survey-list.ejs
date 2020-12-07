@@ -38,17 +38,18 @@
                 <td><%= surveys[count].StartDate %> </td>                
                 <td><%= surveys[count].ExpireDate %> </td>
                 <td class="text-center">
-                  <a href="/survey-result/<%= surveys[0]._id%>" class="btn btn-primary btn-sm">
-                  <i class="fas fa-pencil-alt"></i> Result</a>
-                  </td>
-                <td class="text-center">
-                  <a href="/survey-edit/<%= surveys[0]._id%>" class="btn btn-primary btn-sm">
-                  <i class="fas fa-pencil-alt"></i> Edit</a>
-                  </td>
-                <td class="text-center">
-                  <a href="/survey-delete/<%= surveys[count]._id%>" class="btn btn-danger btn-sm">
-                  <i class="fas fa-trash-alt"></i> Delete</a>
-                  </td>
+                    <button class="btn draw-border"><a href="/survey-result/<%= surveys[count]._id%>"  >
+                      <i class="fas fa-poll-h"></i> Results</a></button>
+              </td>
+               <td class="text-center">
+                    <button class="btn draw-border"><a href="/survey-edit/<%= surveys[count]._id%>"  >
+                      <i class="fas fa-pencil-alt"></i> Edit</a></button>
+              </td>
+              <td class="text-center">
+                  <button class="btn draw-border"><a href="/survey-delete/<%= surveys[count]._id%>"  >
+                    <i class="fas fa-trash-alt"></i> Delete</a></button>
+                 
+              </td>
               </tr>
               <% } %>
             </tbody>
