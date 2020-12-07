@@ -8,6 +8,7 @@ Date: 11/12/2020
 let express = require("express");
 let router = express.Router();
 let passport = require("passport");
+let ObjectsToCsv = require('objects-to-csv');
 
 // connect the survey model
 let surveyModel = require("../models/survey");
@@ -16,7 +17,6 @@ let Survey = surveyModel.Model; // alias
 //connect the survey entry model
 let surveyEntryModel = require("../models/surveyEntry");
 let SurveyEntry = surveyEntryModel.Model; // alias
-
 
 //Render survey-list View
 
@@ -354,4 +354,85 @@ module.exports.DisplaySurveyResultPage = (req, res, next) => {
 //export a pdf or csv here
 module.exports.ProcessSurveyResultPage = (req, res, next) => {
     let id = req.params.id;
+    
+    Survey.findById(id , (err, survey) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        } else {
+            SurveyEntry.findOne({ SurveyID: id }, (err, surveyEntry) => {
+                if (err) {
+                    console.log(err);
+                    res.end(err);
+                } else {
+
+                    let content = [
+                        {
+                            Question: survey.QuestionObject1.Question,
+                            Choice: survey.QuestionObject1.Choices[0],
+                            ChoiceTotal: surveyEntry.QuestionResponse[0]
+                        },
+                        {
+                            Question: survey.QuestionObject1.Question,
+                            Choice: survey.QuestionObject1.Choices[1],
+                            ChoiceTotal: surveyEntry.QuestionResponse[1]
+                        },
+                        {
+                            Question: survey.QuestionObject1.Question,
+                            Choice: survey.QuestionObject1.Choices[2],
+                            ChoiceTotal: surveyEntry.QuestionResponse[2]
+                        },
+                        {
+                            Question: survey.QuestionObject1.Question,
+                            Choice: survey.QuestionObject1.Choices[3],
+                            ChoiceTotal: surveyEntry.QuestionResponse[3]
+                        },
+                        {
+                            Question: survey.QuestionObject2.Question,
+                            Choice: survey.QuestionObject2.Choices[0],
+                            ChoiceTotal: surveyEntry.QuestionResponse[4]
+                        },
+                        {
+                            Question: survey.QuestionObject2.Question,
+                            Choice: survey.QuestionObject2.Choices[1],
+                            ChoiceTotal: surveyEntry.QuestionResponse[5]
+                        },
+                        {
+                            Question: survey.QuestionObject2.Question,
+                            Choice: survey.QuestionObject2.Choices[2],
+                            ChoiceTotal: surveyEntry.QuestionResponse[6]
+                        },
+                        {
+                            Question: survey.QuestionObject2.Question,
+                            Choice: survey.QuestionObject2.Choices[3],
+                            ChoiceTotal: surveyEntry.QuestionResponse[7]
+                        },
+                        {
+                            Question: survey.QuestionObject2.Question,
+                            Choice: survey.QuestionObject2.Choices[0],
+                            ChoiceTotal: surveyEntry.QuestionResponse[8]
+                        },
+                        {
+                            Question: survey.QuestionObject3.Question,
+                            Choice: survey.QuestionObject3.Choices[1],
+                            ChoiceTotal: surveyEntry.QuestionResponse[9]
+                        },
+                        {
+                            Question: survey.QuestionObject3.Question,
+                            Choice: survey.QuestionObject3.Choices[2],
+                            ChoiceTotal: surveyEntry.QuestionResponse[10]
+                        },
+                        {
+                            Question: survey.QuestionObject3.Question,
+                            Choice: survey.QuestionObject3.Choices[3],
+                            ChoiceTotal: surveyEntry.QuestionResponse[11]
+                        }
+                    ]
+                    
+                    ObjectsToCsv(content).toDisk('./' + survey.SurveyName + '.csv');
+                }
+            });
+        }
+    });
+    
 }
