@@ -13,15 +13,15 @@
                 <table class="table table-bordered table-striped table-hover">
                   <thead>
                     <tr>
-                      <th colspan="2">Question: <%= survey.QuestionObject1.Question %></th>
+                      <th colspan="2"><%= survey.QuestionObject1.Question %></th>
                       </tr>
                     </thead>
                     <tbody>
                     <!-- Template Row -->
                     <% for (let count = 0; count < survey.QuestionObject1.Choices.length; count++) { %>
                     <tr>                
-                      <td>Choice: <%= survey.QuestionObject1.Choices[count] %></td>
-                      <td>Count: <%= surveyEntry.QuestionResponse[count] %></td>              
+                      <td><%= survey.QuestionObject1.Choices[count] %></td>
+                      <td><%= surveyEntry.QuestionResponse[count] %></td>              
                     </tr>
                     <% } %>
                   </tbody>
@@ -31,15 +31,15 @@
                 <table class="table table-bordered table-striped table-hover">
                   <thead>
                     <tr>
-                      <th colspan="2">Question: <%= survey.QuestionObject2.Question %></th>
+                      <th colspan="2"><%= survey.QuestionObject2.Question %></th>
                       </tr>
                     </thead>
                     <tbody>
                     <!-- Template Row -->
                     <% for (let count = 0; count < survey.QuestionObject2.Choices.length; count++) { %>
                     <tr>                
-                      <td>Choice: <%= survey.QuestionObject2.Choices[count] %></td>
-                      <td>Count: <%= surveyEntry.QuestionResponse[survey.QuestionObject1.Choices.length + count] %></td>              
+                      <td><%= survey.QuestionObject2.Choices[count] %></td>
+                      <td><%= surveyEntry.QuestionResponse[survey.QuestionObject1.Choices.length + count] %></td>              
                     </tr>
                     <% } %>
                   </tbody>
@@ -49,15 +49,15 @@
                 <table class="table table-bordered table-striped table-hover">
                   <thead>
                     <tr>
-                      <th colspan="2">Question: <%= survey.QuestionObject3.Question %></th>
+                      <th colspan="2"><%= survey.QuestionObject3.Question %></th>
                       </tr>
                     </thead>
                     <tbody>
                     <!-- Template Row -->
                     <% for (let count = 0; count < survey.QuestionObject3.Choices.length; count++) { %>
                     <tr>                
-                      <td>Choice: <%= survey.QuestionObject3.Choices[count] %></td>
-                      <td>Count: <%= surveyEntry.QuestionResponse[survey.QuestionObject2.Choices.length + survey.QuestionObject2.Choices.length + count] %></td>              
+                      <td><%= survey.QuestionObject3.Choices[count] %></td>
+                      <td><%= surveyEntry.QuestionResponse[survey.QuestionObject2.Choices.length + survey.QuestionObject2.Choices.length + count] %></td>              
                     </tr>
                     <% } %>
                   </tbody>
@@ -65,10 +65,9 @@
               </div>
                <div class="col-md-offset-1 col-md-10 text-center">
                <ul class="pagination pagination-lg pager" id="myPager"></ul>
-               <!-- enable this button when csv export is working -->
-                <!--
+               <!-- enable this when the module is working
                 <button class="btn btn-primary" type="submit">
-                <i class="fas fa-create"></i> Export Survey</button>
+                <i class="fas fa-create"></i> Export Survey (csv)</button>
                 -->
             </div>
     </div>
