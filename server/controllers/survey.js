@@ -231,15 +231,13 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
 
 module.exports.DisplaySurveyEditPage = (req, res, next) => {
     let id = req.params.id;
-    
-    
 
     Survey.findById(id, (err, survey) => {
         if (err) {
             console.log(err);
             res.end(err);
         } else {
-            if(req.user._id!=survey.OwnerID){
+            if(req.user._id != survey.OwnerID){
                 return res.redirect("/");
             }
             res.render("content/survey-edit", {
@@ -323,8 +321,37 @@ module.exports.DisplaySurveyDeletePage = (req, res, next) => {
 
 //edit survey result page to add functionality
 module.exports.DisplaySurveyResultPage = (req, res, next) => {
-    res.render("content/survey-result", {
-        title: "Survey Results",
-        displayName: req.user ? req.user.displayName : "",
+    let id = req.params.id;
+
+    Survey.findById(id , (err, survey) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        } else {
+            SurveyEntry.findOne({ SurveyID: id }, (err, surveyEntry) => {
+                if (err) {
+                    console.log(err);
+                    res.end(err);
+                } else {
+                    if(req.user._id != survey.OwnerID){
+                        return res.redirect("/");
+                    }
+        
+                    res.render("content/survey-result", {
+                        title: "Survey Result",
+                        displayName: req.user ? req.user.displayName : "",
+                        total: surveyEntry.QuestionResponse[0] + surveyEntry.QuestionResponse[1] + surveyEntry.QuestionResponse[2] + surveyEntry.QuestionResponse[3],
+                        survey: survey,
+                        surveyEntry: surveyEntry,
+                    });
+                }
+            });
+        }
     });
+    
 };
+
+//export a pdf or csv here
+module.exports.ProcessSurveyResultPage = (req, res, next) => {
+    let id = req.params.id;
+}
