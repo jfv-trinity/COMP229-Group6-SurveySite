@@ -1,8 +1,8 @@
 /* 
 
-File name: server.js
+File name: survey.js
 Date: 12/11/2020
-Description: Controller for surveys. Links with models.survey and routes.server
+Description: Controller for surveys.
 
 */
 
