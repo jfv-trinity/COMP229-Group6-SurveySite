@@ -1,14 +1,18 @@
 /* 
+
 File name: server.js
-Student Name: Chadwick Lapis
-StudentID: 300800490
-Date: 11/12/2020
+Date: 12/11/2020
+Description: Controller for surveys. Links with models.survey and routes.server
+
 */
 
+// Scrapped (Stats to PDF variable)
+//let ObjectsToCsv = require('objects-to-csv');
+
+// survey variables
 let express = require("express");
 let router = express.Router();
 let passport = require("passport");
-//let ObjectsToCsv = require('objects-to-csv');
 
 // connect the survey model
 let surveyModel = require("../models/survey");
@@ -19,7 +23,6 @@ let surveyEntryModel = require("../models/surveyEntry");
 let SurveyEntry = surveyEntryModel.Model; // alias
 
 //Render survey-list View
-
 module.exports.DisplaySurveyListPage = (req, res, next) => {
     Survey.find({ OwnerID: req.user._id }, (err, surveys) => {
         if (err) {
@@ -45,6 +48,7 @@ module.exports.DisplaySurveyListPage = (req, res, next) => {
     });
 };
 
+//formats and returns date value
 function formateDate(dateToBeFormated) {
     var date = new Date(dateToBeFormated);
     var year = date.getFullYear();
@@ -54,6 +58,7 @@ function formateDate(dateToBeFormated) {
     return `${year}-${month}-${day}`; 
 }
 
+//Renders survey-question view
 module.exports.DisplaySurveyQuestionPage = (req, res, next) => {
     let id = req.params.id;
 
@@ -72,11 +77,11 @@ module.exports.DisplaySurveyQuestionPage = (req, res, next) => {
     });
 };
 
+//processes question page
 module.exports.ProcessSurveyQuestionPage = (req, res, next) => {
   
   let id = req.params.id;
   
-
   SurveyEntry.findOne({SurveyID: id }, (err, surveyEntry) => {
     if (err) {
         console.log(err);
@@ -84,7 +89,7 @@ module.exports.ProcessSurveyQuestionPage = (req, res, next) => {
     } else {
       let QR = surveyEntry? surveyEntry.QuestionResponse : [0,0,0,0,0,0,0,0,0,0,0,0];
 
-      //get radio value and increase the corresponding integer in the integer
+      //Increments data on Mongodb by 1 for radio values selected
       //Q1
       if (req.body.Q1 == 'a'){
         QR[0]++;
@@ -164,6 +169,7 @@ module.exports.ProcessSurveyQuestionPage = (req, res, next) => {
   });
 };
 
+//Renders survey-create view
 module.exports.DisplaySurveyCreatePage = (req, res, next) => {
     res.render("content/survey-create", {
         title: "Create a Survey",
@@ -171,6 +177,7 @@ module.exports.DisplaySurveyCreatePage = (req, res, next) => {
     });
 };
 
+//Processes survey-create view
 module.exports.ProcessSurveyCreatePage = (req, res, next) => {
     let newSurvey = Survey({
         SurveyName: req.body.SurveyName,
@@ -179,8 +186,8 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
         StartDate: req.body.StartDate,
         ExpireDate: req.body.ExpireDate,
 
+        //Question 1
         "QuestionObject1.Question": req.body.QuestionObject1Question,
-        // Each one of those requests is one of the choices in the array, Not sure how to pass in a array from the EJs File
         "QuestionObject1.Choices": [
             req.body.QuestionObject1Choice1,
             req.body.QuestionObject1Choice2,
@@ -188,8 +195,8 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
             req.body.QuestionObject1Choice4,
         ],
 
+        //Question 2
         "QuestionObject2.Question": req.body.QuestionObject2Question,
-        // Each one of those requests is one of the choices in the array, Not sure how to pass in a array from the EJs File
         "QuestionObject2.Choices": [
             req.body.QuestionObject2Choice1,
             req.body.QuestionObject2Choice2,
@@ -197,8 +204,8 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
             req.body.QuestionObject2Choice4,
         ],
 
+        //Question 3
         "QuestionObject3.Question": req.body.QuestionObject3Question,
-        // Each one of those requests is one of the choices in the array, Not sure how to pass in a array from the EJs File
         "QuestionObject3.Choices": [
             req.body.QuestionObject3Choice1,
             req.body.QuestionObject3Choice2,
@@ -213,7 +220,7 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
             res.end(err);
         } else {
           let newSurveyEntry = SurveyEntry({
-            SurveyID: Survey._id, //check if the survey id is entered in here
+            SurveyID: Survey._id,
             QuestionResponse: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
           });
       
@@ -229,6 +236,7 @@ module.exports.ProcessSurveyCreatePage = (req, res, next) => {
     });
 };
 
+//Renders survey-edit view
 module.exports.DisplaySurveyEditPage = (req, res, next) => {
     let id = req.params.id;
 
@@ -249,7 +257,7 @@ module.exports.DisplaySurveyEditPage = (req, res, next) => {
     });
 };
 
-//post
+//Processes survey-edit view
 module.exports.ProcessSurveyEditPage = (req, res, next) => {
     let id = req.params.id;
 
@@ -261,8 +269,8 @@ module.exports.ProcessSurveyEditPage = (req, res, next) => {
         StartDate: req.body.StartDate,
         ExpireDate: req.body.ExpireDate,
 
+        //Q1
         "QuestionObject1.Question": req.body.QuestionObject1Question,
-        // Each one of those requests is one of the choices in the array, Not sure how to pass in a array from the EJs File
         "QuestionObject1.Choices": [
             req.body.QuestionObject1Choice1,
             req.body.QuestionObject1Choice2,
@@ -270,8 +278,8 @@ module.exports.ProcessSurveyEditPage = (req, res, next) => {
             req.body.QuestionObject1Choice4,
         ],
 
+        //Q2
         "QuestionObject2.Question": req.body.QuestionObject2Question,
-        // Each one of those requests is one of the choices in the array, Not sure how to pass in a array from the EJs File
         "QuestionObject2.Choices": [
             req.body.QuestionObject2Choice1,
             req.body.QuestionObject2Choice2,
@@ -279,8 +287,8 @@ module.exports.ProcessSurveyEditPage = (req, res, next) => {
             req.body.QuestionObject2Choice4,
         ],
 
+        //Q3
         "QuestionObject3.Question": req.body.QuestionObject3Question,
-        // Each one of those requests is one of the choices in the array, Not sure how to pass in a array from the EJs File
         "QuestionObject3.Choices": [
             req.body.QuestionObject3Choice1,
             req.body.QuestionObject3Choice2,
@@ -299,6 +307,7 @@ module.exports.ProcessSurveyEditPage = (req, res, next) => {
     });
 };
 
+//Renders survey-delete view
 module.exports.DisplaySurveyDeletePage = (req, res, next) => {
     let id = req.params.id;
 
@@ -319,7 +328,7 @@ module.exports.DisplaySurveyDeletePage = (req, res, next) => {
     });
 };
 
-//edit survey result page to add functionality
+//Render survey-result view
 module.exports.DisplaySurveyResultPage = (req, res, next) => {
     let id = req.params.id;
 
