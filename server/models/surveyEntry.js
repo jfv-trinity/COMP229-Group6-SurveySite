@@ -1,14 +1,18 @@
 /* 
-File name: survey.js    
-Student Name: Liam Nelski
-StudentID: 301064116
-Date: 11/16/2020
+
+File name: surveyEntry.js
+Date: 12/11/2020
+Description: Model for surveyEntry.
+
 */
 
+
+//surveyEntry variables
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 let Model = mongoose.model;
 
+//Model Structure
 let SurveyEntry = new Schema({
     SurveyID: String,
     UserID: String,
@@ -18,4 +22,5 @@ let SurveyEntry = new Schema({
     collection: "surveyEntry"
 });
 
+//Processes Model
 module.exports.Model = Model('SurveyEntry', SurveyEntry);

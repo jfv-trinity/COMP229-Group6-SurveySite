@@ -1,15 +1,20 @@
 /* 
+
 File name: user.js
-Student Name: Joseph Volpe
-StudentID: 301118010
-Date: 10/21/2020
+Date: 12/11/2020
+Description: Model for user.
+
 */
 
+
+//user variables
 let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose');
 let Schema = mongoose.Schema;
 let Model = mongoose.model;
 
+
+//Model Structure
 let UserSchema = Schema({
    username: String,
    //password: string,
