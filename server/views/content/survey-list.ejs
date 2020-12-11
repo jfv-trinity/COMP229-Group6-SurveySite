@@ -1,9 +1,9 @@
 <%- include('../partials/header.ejs') -%>
 
+<!-----------------------------SURVEY LIST VIEW ----------------------------------->
+
 
 <!-- MAIN CONTENT -->
-
-
 <div class="container">
  
     <div class="row">
@@ -22,15 +22,10 @@
                 <th>Results</th>
                 <th>Edit</th>                
                 <th>Delete</th>
-                <!--incase we need more columns-->
-                <!--
-                <th class="text-center"></th>
-                <th class="text-center"></th>
-                -->
-
                 </tr>
               </thead>
               <tbody>
+
               <!-- Template Row -->
               <% for (let count = 0; count < surveys.length; count++) { %>
               <tr>                

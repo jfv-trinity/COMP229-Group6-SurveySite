@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+
+
     <!-- CSS Section -->
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/all.min.css">
@@ -23,9 +25,6 @@
           <a data-item='Home' href="/home">Home </a>
         </li>
         <% } else { %>
-          <!-- <li class="nav-item active">
-            <a class="nav-link" href="/home"><i class="fas fa-home fa-lg"></i> Home </a>
-          </li> -->
         <% } %>
 
 
@@ -34,8 +33,6 @@
           <a data-item='Survey List' href="/survey-list"> Survey List </a>
         </li>
         <% } else { %>
-          <!---<li class="nav-item active">
-            <a class="nav-link" href="/login"><i class="far fa-address-book fa-lg"></i></i> Survey List </a>--->
         <% } %>
         <% if(typeof displayName == 'string' && displayName) { %>
           <li data-item='Welcome' style="font-size: 1.5rem;"> Welcome, <%= displayName %></li>
