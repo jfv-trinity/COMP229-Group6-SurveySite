@@ -1,18 +1,20 @@
 #!/usr/bin/env node
 
 /* 
+
 File name: server.js
-Student Name: Chadwick Lapis
-StudentID: 300800490
-Date: 11/12/2020
+Date: 12/11/2020
+Description: routes for surveyEntry.
+
 */
 
 
+//route variables
 let express = require('express');
 let router = express.Router();
-
 let indexController = require('../controllers/server');
 let surveyController = require('../controllers/survey');
+
 
 //helper function for authentication guard
 function requiredAuth(req, res, next)
@@ -24,6 +26,7 @@ function requiredAuth(req, res, next)
     }
     next();
 }
+
 
 /* GET home page. */
 router.get('/', indexController.DisplayHomePage);
@@ -60,7 +63,6 @@ router.get('/survey-result/:id', surveyController.DisplaySurveyResultPage);
 
 /* POST Survey Question page. */
 router.get('/survey-result/:id', surveyController.ProcessSurveyResultPage);
-
 
 /* GET - Display Login Page */
 router.get('/login', indexController.DisplayLoginPage);

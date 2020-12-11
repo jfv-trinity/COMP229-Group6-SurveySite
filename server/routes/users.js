@@ -1,12 +1,16 @@
 /* 
-File name: users.js
-Student Name: Joseph Volpe
-StudentID: 301118010
-Date: 10/22/2020
+
+File name: user.js
+Date: 12/11/2020
+Description: routes for users.
+
 */
 
+
+//user variables
 let express = require('express');
 let router = express.Router();
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
